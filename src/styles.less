@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+    background-image: url('./assets/img/background-img.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: cover;
+}
+
+.wrapper {
+
+    &.sidebar-wrapper {
+        display: flex;
+        align-items: stretch;
+        .sidebar {
+            min-width: 315px;
+            max-width: 315px;
+            min-height: 100vh;
+            background: white;
+        }
+    }
+  }
+
+  .navbar {
+      border-bottom: 2px solid #5ecdc7;
+      background-color: white !important;
+
+  }
+
+  
+.bugtracker-dropdown {
+    background-color: transparent;
+    border: none;
+    color: #05414c;
+
+    &:active {
+        background-color: #05414c;
+        color: white;
+    }
+
+    &:hover {
+        color: white;
+        background-color: #57c6bd;
+    }
+
+}
+
+
+#toast-container > div {
+    opacity: 1;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

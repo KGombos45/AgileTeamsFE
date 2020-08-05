@@ -1,0 +1,60 @@
+.mat-toolbar.mat-primary {
+    //border-bottom: 2px solid #5ecdc7;
+    background-color: transparent !important;
+    color: white;
+
+    animation: bounceInDown; 
+    animation-duration: 1.2s; 
+    animation-delay: .1;
+}
+
+ul {
+    li {
+        list-style: none;
+        margin-top: 20px;
+    }
+}
+
+::ng-deep .mat-button {
+    border: none;
+    text-transform: uppercase;
+
+    &:hover {
+        background: #57c6bd !important;
+        color: white !important;
+
+        .mat-icon {
+            color: white !important;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+::ng-deep .mat-menu-panel {
+    background: white;  
+}
+
+::ng-deep button.mat-menu-item {
+    color: #05414c;
+    background: white;
+
+    &:hover {
+        background: #57c6bd !important;
+        color: white !important;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+::ng-deep .mat-icon {
+    color: white;
+}
+
+::ng-deep .mat-menu-item .mat-icon-no-color, .mat-menu-item-submenu-trigger::after {
+    color: #05414c;
+}

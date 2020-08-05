@@ -1,0 +1,76 @@
+ul {
+    margin-top: 35px;
+
+    li {
+        list-style-type: none;
+        width: 95%;
+        margin-left: -10px;
+        margin-top: 15px;
+
+        a {
+            -o-transition:.15s;
+            -ms-transition:.15s;
+            -moz-transition:.15s;
+            -webkit-transition:.15s;
+            /* ...and now for the proper property */
+            transition:.15s;
+            color: white;
+
+            i {
+                padding-right: 10px;
+            }
+
+            &:hover {
+                color: white;
+                background-color: #57c6bd;
+            }
+
+            &.active {
+                color: white;
+                background-color: #05414c;
+            }
+        }
+    }
+}
+
+.link-btn {
+    background-color: white;
+    display: block;
+    height: 55px;
+    border-radius: 8px;
+    color: #05414c;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-left: 15px;
+    
+    &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: #57c6bd;
+    }
+
+    &:active {
+      text-decoration: none;
+      color: white;
+      background-color: #05414c;
+    }
+}
+
+.profile-card {
+    padding: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 400;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+
+    .headerText {
+        padding-left: 20px;
+
+        h2, h3, h4 {
+            margin: 0;
+        }
+    }
+}
+

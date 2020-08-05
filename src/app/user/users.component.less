@@ -1,0 +1,152 @@
+.main-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 80px;    
+}
+
+.card {    
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    background: #1905235c;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    margin: 0 auto;
+
+    animation: bounceIn; 
+    animation-duration: 1.2s; 
+  }
+
+  
+  .card-header {
+    width: 98%;
+    background: linear-gradient(60deg, #0f4157, #134d63);
+    position: absolute;
+    top: -12px;
+    left: 4px;
+    border-radius: 8px;   
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(70,182,168,.55);
+
+    animation: bounceIn; 
+    animation-duration: 1.2s; 
+    animation-delay: .1;
+  }
+
+  .card-body {
+      margin-top: 100px;
+  }
+
+
+  .tab-header {
+      text-align: center;
+
+      h2 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 300;
+        display:inline-block;
+        padding: 30px 40px 10px 40px;
+        cursor: pointer;
+        color: #d4d4d4;
+        border-bottom: 2px solid #adadad;
+        
+
+            &.active {
+                color: white;
+                font-weight: 500;
+                border-bottom: 4px solid white;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+      }
+  }
+
+form {
+    margin: 0px 16px;
+    margin-top: 25px;
+    color: white;
+}
+
+.btn-register {
+    margin-bottom: 10px !important;
+    margin-top: 5px !important;
+}
+
+.btn-login {
+    margin-top: 5px !important;
+    margin-bottom: -20px !important;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+.userForm-image {
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+.mat-flat-button {
+    background: #3faf61;
+    color: white;
+    margin: 0 auto;
+    width: 145px;
+
+    &:hover {
+        background: #3a9e58;
+    }
+
+    &.mat-button-disabled {
+        color: #ffffff94;
+        background-color: #3faf61b8;
+        cursor: not-allowed;
+    }
+}
+
+.mat-input-element {
+    caret-color: #58c7ce;
+}
+
+mat-label {
+    color: #f1f1f1;   
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: white !important;
+}
+
+::ng-deep .mat-input-element::placeholder{
+    color: white;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: #38aab4 !important;
+}
+::ng-deep .mat-form-field-ripple {
+    background-color: #58c7ce !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid mat-label {
+    color: red !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
+    caret-color: red !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: red !important;
+}

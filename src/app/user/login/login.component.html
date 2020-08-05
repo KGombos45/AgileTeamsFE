@@ -1,0 +1,19 @@
+<img src="../../../assets/img/login.png" alt="Login" class="mx-auto d-block userForm-image">
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+    <!-- <div class="form-group">
+        <input class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" placeholder="Username" required>
+    </div> -->
+    <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
+        <mat-label>Username</mat-label>
+        <input matInput #UserName="ngModel" name="UserName" #Username="ngModel" [(ngModel)]="formModel.UserName" required>
+      </mat-form-field>
+    <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
+        <mat-label>Password</mat-label>
+        <input matInput #UserName="ngModel" [type]="hide ? 'password' : 'text'" name="Password" #Password="ngModel" [(ngModel)]="formModel.Password" required>        
+        <mat-icon matSuffix fontSet="material-icons-outlined" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+    <div class="form-row">
+            <button class="btn-login" mat-flat-button type="submit" [disabled]="form.invalid">Login</button>
+            <div class="clearfix"></div>
+    </div>
+</form>

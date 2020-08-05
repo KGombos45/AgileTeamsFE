@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <span style="font-weight: 300;" *ngIf="userInfo">        
+       Logged in as: <strong>{{userInfo.role}}</strong>
+      </span>
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+          <ul fxLayout="row" fxLayoutGap="20px">
+              <li>
+                  <button mat-button [matMenuTriggerFor]="notifications">
+                      NOTIFICATIONS <mat-icon matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications_none</mat-icon>
+                  </button>
+                  <mat-menu #notifications="matMenu">
+                    <button mat-menu-item>
+                      New defect 'broken sign in' logged by John Doe
+                  </button>
+                    <button mat-menu-item>
+                      Alexa Ramirez finished QA on DE245511
+                  </button>
+                    <button mat-menu-item>
+                      Reminder: Change your password in 16 days
+                  </button>
+                    <button mat-menu-item>
+                      Lorem ipsum solurs da raemus
+                  </button>
+                </mat-menu>
+              </li>
+              <li>
+                  <button mat-button [matMenuTriggerFor]="menu" *ngIf="userInfo">
+                      <mat-icon>person</mat-icon>
+                      {{userInfo.userName}}
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                        <mat-icon>account_box</mat-icon>
+                        Edit Profile
+                    </button>
+                      <button mat-menu-item (click)="onLogout()">
+                          <mat-icon>exit_to_app</mat-icon>
+                          Sign out
+                      </button>
+                  </mat-menu>
+              </li>
+          </ul>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-divider></mat-divider>
