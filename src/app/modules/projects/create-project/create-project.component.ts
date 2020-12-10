@@ -13,10 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreateProjectComponent implements OnInit {
 
-  projectModel : FormGroup
+  projectModel : FormGroup;
   currentDate = new Date();
   statuses;
-  userInfo;
+  userInfo = JSON.parse(localStorage.getItem('User'));
   usersList;
   
 
@@ -26,7 +26,6 @@ export class CreateProjectComponent implements OnInit {
 
     this.setProjectForm();
     this.getProjectStatuses();
-    this.getUserAccount();
     this.getUsers();
 
   }
@@ -36,8 +35,8 @@ export class CreateProjectComponent implements OnInit {
     this.projectModel = this.fb.group({
       projectName: '',
       projectDescription: '',
-      projectStatus: [null],
-      projectOwner: [null],
+      projectStatusID: [null],
+      projectOwnerID: [null],
       createdOn: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       createdBy: [null],
       startDate: [null],
@@ -49,17 +48,6 @@ export class CreateProjectComponent implements OnInit {
     this.service.getProjectStatuses().subscribe(res => {
       this.statuses = res;
     });
-  }
-
-  getUserAccount() {
-    this.service.getUserAccount().subscribe(
-      res => {
-        this.userInfo = res;
-      },
-      err => {
-        console.log(err);
-      },
-    );
   }
 
   getUsers() {
@@ -76,7 +64,6 @@ export class CreateProjectComponent implements OnInit {
   createProject() {  
     this.projectModel.value.createdBy = this.userInfo.userName;
     debugger;
-
     this.service.createProject(this.projectModel).subscribe(res => {
       this.toastr.success('Project created!', 'Project succesfully added to projects repository.');
     });

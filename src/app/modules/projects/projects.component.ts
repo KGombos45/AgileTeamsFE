@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
@@ -8,7 +9,14 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.less']
+  styleUrls: ['./projects.component.less'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ProjectsComponent implements OnInit {
 
@@ -17,23 +25,41 @@ export class ProjectsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<any>;
-  statuses;
+  projectStatuses;
+  ticketStatuses;
   usersList;
 
   constructor(private service: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
-    this.getProjectStatuses();
+    
     this.getUsers();
+    this.getProjectStatuses();
+    this.getTicketStatuses();
     this.getProjects();
 
+  }
+
+  setIsExpanded(data) {
+    debugger;
+    data.forEach(d => {
+      d.isExpanded = false;
+      
+    });
+
+    return data;
   }
 
   
   getProjectStatuses() {
     this.service.getProjectStatuses().subscribe(res => {
-      this.statuses = res;
+      this.projectStatuses = res;
+    });
+  }
+
+  getTicketStatuses() {
+    this.service.getTicketStatuses().subscribe(res => {
+      this.ticketStatuses = res;
     });
   }
 
@@ -47,21 +73,39 @@ export class ProjectsComponent implements OnInit {
   }
 
   onOwnerChange(event, element) {
-    if (event.source.value !== element.projectOwner)
-      element.projectOwner = event.source.value;
+    if (event.source.value !== element.projectOwner) {
+      element.projectOwnerID = event.source.value.id;
+    }
+
 
     this.service.updateProject(element).subscribe(res => {
       this.toastr.success('Project owner updated', 'Project owner has been updated succesfully');
     });   
   }
 
+  onStartDateChange(event, element) {
+      element.startDate = event.value;
+
+      this.service.updateProject(element).subscribe(res => {
+        this.toastr.success('Project start date updated', 'Project start date has been updated succesfully');
+      }); 
+  }
+
+  onTargetEndDateChange(event, element) {
+    element.targetEndDate = event.value;
+
+    this.service.updateProject(element).subscribe(res => {
+      this.toastr.success('Project target end date updated', 'Project target end date has been updated succesfully');
+    }); 
+}
+
   getProjects() {
     this.service.getProjects().subscribe(
       (res: any) => {
         this.dataSource.data = res;
-        debugger;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.setIsExpanded(this.dataSource.data);
       },
       err => {
         console.log(err);
@@ -71,7 +115,7 @@ export class ProjectsComponent implements OnInit {
 
   getUsers() {
     this.service.getUsers().subscribe(
-      res => {
+      (res: any) => {
         this.usersList = res;
       },
       err => {
@@ -90,11 +134,20 @@ export class ProjectsComponent implements OnInit {
   }
 
   compareStatuses(o1: any, o2: any): boolean {
-    return o1.projectStatusName === o2.projectStatusName && o1.projectStatusId === o2.projectStatusId;
+    return o1.statusName === o2.statusName && o1.statusID === o2.statusID;
   }
 
   compareOwners(o1: any, o2: any): boolean {
-    return o1.userName === o2.userName && o1.id === o2.id;
+    return o1.userName === o2.userName;
+  }
+
+  compareTicketStatuses(o1: any, o2: any): boolean {
+    debugger;
+    return o1.statusName === o2.statusName && o1.statusID === o2.statusID;
+  }
+
+  compareTicketOwners(o1: any, o2: any): boolean {
+    return o1.userName === o2;
   }
 
 }

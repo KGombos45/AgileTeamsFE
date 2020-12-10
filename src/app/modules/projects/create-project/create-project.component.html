@@ -17,16 +17,16 @@
                         <div class="col-md-4">
                             <mat-form-field class="full-width">
                                 <mat-label>Status</mat-label>
-                                <mat-select formControlName="projectStatus">
-                                    <mat-option *ngFor="let status of statuses" [value]="status">{{status.projectStatusName}}</mat-option>
+                                <mat-select formControlName="projectStatusID">
+                                    <mat-option *ngFor="let status of statuses" [value]="status.statusID">{{status.statusName}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
                             <mat-form-field class="full-width">
                                 <mat-label>Project Owner</mat-label>
-                                <mat-select formControlName="projectOwner">
-                                    <mat-option *ngFor="let user of usersList" [value]="user">{{user.userName}}</mat-option>
+                                <mat-select formControlName="projectOwnerID">
+                                    <mat-option *ngFor="let user of usersList" [value]="user.id">{{user.userName}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

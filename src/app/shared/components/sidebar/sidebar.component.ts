@@ -29,13 +29,13 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
 
   menuItems: any[];
-  userInfo;
-
+  userInfo = JSON.parse(localStorage.getItem('User'));
+  
   constructor(private router: Router, private service: UserService) { }
 
   ngOnInit(): void {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    this.getUserAccount();    
+   
   }
 
   isVisibleLink(menuItem, role) {
@@ -45,17 +45,6 @@ export class SidebarComponent implements OnInit {
       return false;
     else
       return true;      
-  }
-
-  getUserAccount() {
-    this.service.getUserAccount().subscribe(
-      res => {
-        this.userInfo = res;        
-      },
-      err => {
-        console.log(err);
-      },
-    );
   }
 
 }

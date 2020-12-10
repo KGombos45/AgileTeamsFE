@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormGroupDirective } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export interface User {
   id: string;
@@ -98,6 +98,10 @@ export class UserService {
     return this.http.get(this.BaseURI+'/Project/Statuses');
   }
 
+  getTicketStatuses() {
+    return this.http.get(this.BaseURI+'/Ticket/Statuses');
+  }
+
   createProject(projectModel) {
     return this.http.post(this.BaseURI+'/Project/Create', projectModel.value)
   }
@@ -108,6 +112,25 @@ export class UserService {
 
   deleteProject(row) {
     return this.http.post(this.BaseURI+'/Project/DeleteProject', row);
+  }
+
+  getTickets(userId) {
+
+    return this.http.get(this.BaseURI+'/Ticket/Tickets/' + userId);
+
+  }
+
+  createTicket(ticketModel) {
+    return this.http.post(this.BaseURI+'/Ticket/Create', ticketModel.value)
+  }
+
+  updateTicket(element) {
+    return this.http.put(this.BaseURI+'/Ticket/UpdateTicket', element);
+  }
+
+
+  deleteTicket(row) {
+    return this.http.post(this.BaseURI+'/Ticket/DeleteTicket', row);
   }
   
 }

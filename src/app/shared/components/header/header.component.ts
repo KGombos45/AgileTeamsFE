@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
     this.service.getUserAccount().subscribe(
       res => {
         this.userInfo = res;
+        localStorage.setItem('User', JSON.stringify(this.userInfo));
       },
       err => {
         console.log(err);
