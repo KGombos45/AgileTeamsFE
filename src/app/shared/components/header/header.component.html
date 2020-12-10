@@ -31,7 +31,7 @@
                       {{userInfo.userName}}
                   </button>
                   <mat-menu #menu="matMenu">
-                      <button mat-menu-item>
+                      <button mat-menu-item [routerLink]="'/user-profile/'">
                         <mat-icon>account_box</mat-icon>
                         Edit Profile
                     </button>

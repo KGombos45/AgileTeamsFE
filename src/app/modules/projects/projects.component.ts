@@ -5,14 +5,17 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.less'],
+  providers: [DatePipe],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('collapsed', style({ height: '0px', minHeight: '0', border: 'none' })),
       state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
@@ -28,8 +31,10 @@ export class ProjectsComponent implements OnInit {
   projectStatuses;
   ticketStatuses;
   usersList;
+  userInfo = JSON.parse(localStorage.getItem('User'));
+  currentDate = new Date();
 
-  constructor(private service: UserService, private toastr: ToastrService) { }
+  constructor(private service: UserService, private toastr: ToastrService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     
@@ -41,7 +46,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   setIsExpanded(data) {
-    debugger;
     data.forEach(d => {
       d.isExpanded = false;
       
@@ -50,6 +54,16 @@ export class ProjectsComponent implements OnInit {
     return data;
   }
 
+  setElementIsExpanded(element, dataSource) {
+    
+    dataSource.data.forEach(item => {
+      if (item.isExpanded && item.projectID !== element.projectID) {
+        item.isExpanded = !item.isExpanded;
+      }
+    });
+
+    return element.isExpanded = !element.isExpanded;
+  }
   
   getProjectStatuses() {
     this.service.getProjectStatuses().subscribe(res => {
@@ -64,8 +78,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   onStatusChange(event, element) {
-    if (event.source.value !== element.projectStatus)
+    if (event.source.value !== element.projectStatus) {
       element.projectStatus = event.source.value;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
+    }
 
     this.service.updateProject(element).subscribe(res => {
       this.toastr.success('Project status updated', 'Project status has been updated succesfully');
@@ -73,8 +90,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   onOwnerChange(event, element) {
+    debugger;
     if (event.source.value !== element.projectOwner) {
       element.projectOwnerID = event.source.value.id;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
     }
 
 
@@ -85,6 +105,8 @@ export class ProjectsComponent implements OnInit {
 
   onStartDateChange(event, element) {
       element.startDate = event.value;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
 
       this.service.updateProject(element).subscribe(res => {
         this.toastr.success('Project start date updated', 'Project start date has been updated succesfully');
@@ -93,10 +115,41 @@ export class ProjectsComponent implements OnInit {
 
   onTargetEndDateChange(event, element) {
     element.targetEndDate = event.value;
+    element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+    element.modifiedBy = this.userInfo.userName;
 
     this.service.updateProject(element).subscribe(res => {
       this.toastr.success('Project target end date updated', 'Project target end date has been updated succesfully');
     }); 
+}
+
+
+onTicketStatusChange(event, element) {
+
+  if (event.source.value !== element.ticketStatus) {
+    element.ticketStatus = event.source.value;
+    element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+    element.modifiedBy = this.userInfo.userName;
+  }
+    
+
+  this.service.updateTicket(element).subscribe(res => {
+    this.toastr.success('Ticket status updated', 'Ticket status has been updated succesfully');
+  });   
+}
+
+onTicketOwnerChange(event, element) {
+
+  if (event.source.value !== element.ticketOwner) {
+    element.ticketOwnerID = event.source.value.id;
+    element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+    element.modifiedBy = this.userInfo.userName;
+  }
+
+
+  this.service.updateTicket(element).subscribe(res => {
+    this.toastr.success('Ticket owner updated', 'Ticket owner has been updated succesfully');
+  });   
 }
 
   getProjects() {
@@ -142,7 +195,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   compareTicketStatuses(o1: any, o2: any): boolean {
-    debugger;
     return o1.statusName === o2.statusName && o1.statusID === o2.statusID;
   }
 

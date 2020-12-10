@@ -44,7 +44,7 @@
                             <mat-form-field class="full-width">
                                 <mat-label>Project</mat-label>
                                 <mat-select formControlName="ticketProjectID">
-                                    <mat-option *ngFor="let project of projectsList" [value]="project.projectId">{{project.projectName}}</mat-option>
+                                    <mat-option *ngFor="let project of projectsList" [value]="project.projectID">{{project.projectName}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

@@ -66,14 +66,17 @@
                             <!-- Created On Column -->
                             <ng-container matColumnDef="createdOn">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Created On </th>
-                                <td mat-cell *matCellDef="let element"> {{element.createdOn}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.createdOn | date:'longDate'}}</td>
                             </ng-container>
 
                             <ng-container matColumnDef="actions">
-                                <th mat-header-cell *matHeaderCellDef>Delete</th>
+                                <th mat-header-cell *matHeaderCellDef>Delete/Open</th>
                                 <mat-cell *matCellDef="let row">
                                     <button mat-flat-button class="btn-delete" (click)="deleteTicket(row)">
                                         <mat-icon>delete_outline</mat-icon>
+                                    </button>
+                                    <button mat-flat-button class="btn-open">
+                                        <mat-icon>open_in_new</mat-icon>
                                     </button>
                                 </mat-cell>
                             </ng-container>

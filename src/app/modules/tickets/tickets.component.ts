@@ -4,11 +4,15 @@ import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.less']
+  styleUrls: ['./tickets.component.less'],
+  providers: [DatePipe]
+
 })
 export class TicketsComponent implements OnInit {
 
@@ -21,8 +25,10 @@ export class TicketsComponent implements OnInit {
   usersList;
   projectsList;
   userInfo = JSON.parse(localStorage.getItem('User'));
+  currentDate = new Date();
 
-  constructor(private service: UserService, private toastr: ToastrService) { }
+
+  constructor(private service: UserService, private toastr: ToastrService, private datePipe: DatePipe) { }
 
   async ngOnInit() {
 
@@ -88,27 +94,32 @@ export class TicketsComponent implements OnInit {
       element.ticketStatus = event.source.value;
 
     this.service.updateTicket(element).subscribe(res => {
-      this.toastr.success('Ticket status updated', 'Project status has been updated succesfully');
+      this.toastr.success('Ticket status updated', 'Ticket status has been updated succesfully');
     });   
   }
 
   onProjectChange(event, element) {
-    if (event.source.value !== element.ticketProject)
+    if (event.source.value !== element.ticketProject) {
       element.ticketProject = event.source.value;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
+    }
+
 
     this.service.updateTicket(element).subscribe(res => {
-      this.toastr.success('Ticket project updated', 'Project status has been updated succesfully');
+      this.toastr.success('Ticket project updated', 'Ticket status has been updated succesfully');
     });   
   }
 
   onOwnerChange(event, element) {
     if (event.source.value !== element.ticketOwner) {
       element.ticketOwnerID = event.source.value.id;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
     }
-
-
+    
     this.service.updateTicket(element).subscribe(res => {
-      this.toastr.success('Ticket owner updated', 'Project owner has been updated succesfully');
+      this.toastr.success('Ticket owner updated', 'Ticket owner has been updated succesfully');
     });   
   }
 
