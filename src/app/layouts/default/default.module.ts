@@ -8,8 +8,10 @@ import { ManageRolesComponent } from '../../modules/manage-roles/manage-roles.co
 import { WorkItemsComponent } from '../../modules/workitems/workitems.component';
 import { CreateWorkItemComponent } from '../../modules/workitems/create-workitem/create-workitem.component'
 import { WorkItemViewComponent } from '../../modules/workitems/workitem-view/workitem-view.component';
+import { MyWorkItemsComponent } from '../../modules/workitems/my-work-items/my-work-items.component';
 import { TicketViewComponent } from '../../modules/tickets/ticket-view/ticket-view.component';
 import { TicketsComponent } from '../../modules/tickets/tickets.component';
+import { MyTicketsComponent } from '../../modules/tickets/my-tickets/my-tickets.component';
 import { CreateTicketComponent } from '../../modules/tickets/create-ticket/create-ticket.component'
 import { CreateProjectComponent } from '../../modules/projects/create-project/create-project.component';
 import { ProjectsComponent } from '../../modules/projects/projects.component';
@@ -46,7 +48,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     TicketViewComponent,
     ProjectsComponent,
     CreateProjectComponent,    
-    ProjectViewComponent
+    ProjectViewComponent,
+    MyWorkItemsComponent,
+    MyTicketsComponent
   ],
   imports: [
     CommonModule,

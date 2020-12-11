@@ -9,17 +9,39 @@ declare interface RouteInfo {
   icon: string;
   isAdminLink: boolean;
   isProjectManagerLink: boolean;
+  subMenu: boolean;
+  subLink: {
+    path: string;
+    title: string;
+    icon: string;
+  }
 }
 
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', isAdminLink: false, isProjectManagerLink: false},
-  { path: '/manage-roles', title: 'Manage User Roles', icon: 'group_add', isAdminLink: true, isProjectManagerLink: false},
-  { path: '/manage-users', title: 'Manage Project Users', icon: 'people_alt', isAdminLink: false, isProjectManagerLink: true},
-  { path: '/create-project', title: 'Add New Project', icon: 'add', isAdminLink: true, isProjectManagerLink: true },
-  { path: '/projects-list', title: 'Projects', icon: 'category', isAdminLink: false, isProjectManagerLink: false },
-  { path: '/myworkitems', title: 'My Work Items', icon: 'code', isAdminLink: false, isProjectManagerLink: false},
-  { path: '/mytickets', title: 'My Tickets', icon: 'bug_report', isAdminLink: false, isProjectManagerLink: false},
-  { path: '/user-profile/', title: 'User Profile', icon: 'person', isAdminLink: false, isProjectManagerLink: false}
+  { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', isAdminLink: false, isProjectManagerLink: false, subMenu: false, subLink: { 
+    path: null, title: null, icon: null
+   }},
+  { path: '/manage-roles', title: 'Manage User Roles', icon: 'group_add', isAdminLink: true, isProjectManagerLink: false, subMenu: false, subLink: { 
+    path: null, title: null, icon: null
+   }},
+  { path: '/manage-users', title: 'Manage Project Users', icon: 'people_alt', isAdminLink: false, isProjectManagerLink: true, subMenu: false, subLink: { 
+    path: null, title: null, icon: null
+   }},
+  { path: '/create-project', title: 'Add New Project', icon: 'add', isAdminLink: true, isProjectManagerLink: true, subMenu: false, subLink: {
+    path: null, title: null, icon: null
+  }},
+  { path: '/projects-list', title: 'Projects', icon: 'list', isAdminLink: false, isProjectManagerLink: false, subMenu: false, subLink: { 
+    path: null, title: null, icon: null
+   }},
+  { path: '/workitems', title: 'Work Items', icon: 'code', isAdminLink: false, isProjectManagerLink: false, subMenu: true, subLink: { 
+    path: '/myworkitems', title: 'My Work Items', icon: 'subdirectory_arrow_right'
+   }},
+  { path: '/tickets', title: 'Tickets', icon: 'bug_report', isAdminLink: false, isProjectManagerLink: false, subMenu: true, subLink: { 
+    path: '/mytickets', title: 'My Tickets', icon: 'subdirectory_arrow_right'
+   }},
+  { path: '/user-profile/', title: 'User Profile', icon: 'person', isAdminLink: false, isProjectManagerLink: false, subMenu: false, subLink: { 
+    path: null, title: null, icon: null
+   }},
 ];
 
 

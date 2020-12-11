@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Your Tickets</h4>
+                        <p class="card-category">Create, edit, and view your tickets</p>
+                    </div>
+                    <div class="card-body">
+                        <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-ticket'">
+                            <mat-icon>add</mat-icon>
+                            Create New Ticket
+                        </button>    
+                        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+                            <!-- Ticket Name Column -->
+                            <ng-container matColumnDef="ticketName">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.ticketName}} </td>
+                            </ng-container>
+
+                            <!-- Ticket Owner Column -->
+                            <ng-container matColumnDef="ticketOwner">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Owner </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <mat-form-field class="full-width"> 
+                                        <mat-select [value]="element.ticketOwner.userName" [compareWith]="compareOwners" (selectionChange)="onOwnerChange($event, element)">
+                                            <mat-option *ngFor="let user of usersList" [value]="user">{{user.userName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                            </ng-container>
+
+                            
+                            <!-- Ticket Owner Column -->
+                            <ng-container matColumnDef="ticketWorkItem">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Work Item </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <mat-form-field class="full-width"> 
+                                        <mat-select [value]="element.ticketWorkItem.workItemName" [compareWith]="compareWorkItems" (selectionChange)="onWorkItemChange($event, element)">
+                                            <mat-option *ngFor="let workItem of workItemsList" [value]="workItem">{{workItem.workItemName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                            </ng-container>
+
+                            <!-- Ticket Status Column -->
+                            <ng-container matColumnDef="ticketStatus">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Status </th>
+                                <td mat-cell *matCellDef="let element;">
+                                    <mat-form-field class="full-width">
+                                        <mat-select [value]="element.ticketStatus"  [compareWith]="compareStatuses" (selectionChange)="onStatusChange($event, element)">
+                                            <mat-option *ngFor="let status of statuses" [value]="status">{{status.statusName}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                            </ng-container>
+                            
+                            <!-- Created By Column -->
+                            <ng-container matColumnDef="createdBy">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
+                                <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
+                            </ng-container>
+
+                            <!-- Created On Column -->
+                            <ng-container matColumnDef="createdOn">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Created On </th>
+                                <td mat-cell *matCellDef="let element"> {{element.createdOn | date:'longDate'}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef>Delete/Open</th>
+                                <mat-cell *matCellDef="let row">
+                                    <button mat-flat-button class="btn-delete" (click)="deleteTicket(row)">
+                                        <mat-icon>delete_outline</mat-icon>
+                                    </button>
+                                    <button mat-flat-button class="btn-open" (click)="viewTicket(row)">
+                                        <mat-icon>open_in_new</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

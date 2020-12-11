@@ -7,15 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-tickets',
-  templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.less'],
+  selector: 'app-my-tickets',
+  templateUrl: './my-tickets.component.html',
+  styleUrls: ['./my-tickets.component.less'],
   providers: [DatePipe]
-
 })
-export class TicketsComponent implements OnInit {
+export class MyTicketsComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['ticketName', 'ticketOwner', 'ticketWorkItem', 'ticketStatus', 'createdBy', 'createdOn', 'actions'];
@@ -36,12 +34,13 @@ export class TicketsComponent implements OnInit {
     this.getUsers();
     this.getTicketStatuses();
     this.getWorkItems();
-    this.getTickets();
+    this.getUserTickets();
   }
   
-  getTickets() {
-    this.service.getTickets().subscribe(
+  getUserTickets() {
+    this.service.getUserTickets(this.userInfo.id).subscribe(
       (res: any) => {
+        debugger;
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

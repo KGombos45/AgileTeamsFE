@@ -1,0 +1,183 @@
+.main-content{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -80px;
+  }
+
+  .card {
+      width: 95%;
+      margin: 0 auto;
+      background: #1905235c;
+      color: white; 
+      border-radius: 8px;   
+      box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      height: auto;
+      max-height: 850px;
+  }
+
+  .card-header {
+    width: 98%;
+    background: linear-gradient(60deg, #0f4157, #134d63);
+    position: absolute;
+    top: -12px;
+    left: 8px;
+    border-radius: 8px;   
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(70,182,168,.55);
+
+
+    h4, p {
+        margin-bottom: 4px;
+    }
+
+    p {
+        color: #e2e2e2;
+    }
+  }
+
+  .card-body {
+      margin-top: 60px;
+  }
+
+//   .table-responsive {
+//     height: auto;
+//     max-height: 600px;
+//   }
+
+//   .table {
+//       color: white;
+//       text-transform: uppercase;
+
+
+//       td {
+//           border-color: #58c7ce;
+
+//           &:first-child {
+//               border-bottom-left-radius: 8px;
+//               border-top-left-radius: 8px;
+//           }
+
+//           &:last-child {
+//             border-bottom-right-radius: 8px;
+//             border-top-right-radius: 8px;
+//         }
+//       }
+//   }.
+
+.mat-flat-button.mat-button-disabled {
+    &.btn-submit {        
+        color: #ffffff94;
+        background-color: #3faf6185;
+        cursor: not-allowed;
+    }
+}
+
+.mat-flat-button {
+
+    min-width: auto;
+
+    &.btn-create {
+        background: #3faf61;
+        color: white;
+        float: left;
+        margin-bottom: 15px;
+    
+        &:hover {
+            background: #3a9e58;
+        }
+    }
+
+    &.btn-submit {
+        background: #3faf61;
+        color: white;
+        float: right;
+    
+        &:hover {
+            background: #3a9e58;
+        }
+    }
+
+    &.btn-delete {
+        background: #c30000;
+        color: white;
+        float: right;
+        margin-left: 10px;
+    
+        &:hover {
+            background: #ab0404;
+        }
+    }
+
+    &.btn-open {
+        background: #3faf9f;
+        color: white;
+        margin-left: 10px;
+
+        &:hover {
+            background: #308478;
+        }
+    } 
+
+}
+
+tr {
+    &:hover {
+        background: #3baa998c;
+    }
+}
+
+.mat-table {
+    width: 100%;
+    background: transparent;
+}
+
+::ng-deep .mat-paginator-container {
+    background: #0f3f52;
+    color: white;
+}
+
+::ng-deep .mat-sort-header-arrow {
+    color: #75ff92;
+}
+
+th.mat-header-cell {
+    background: #11475d;
+    color: white;
+    font-weight: bold;
+}
+
+.mat-cell {
+    color: rgb(255, 255, 255, 0.87) !important;
+    border-bottom-color: rgb(94, 205, 199, 0.32) !important;
+}
+
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+    width: 180px;
+    text-align: center;
+}
+
+mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
+    padding-top: 10px;
+}
+
+  ::ng-deep .mat-form-field-underline {
+    background-color: #38aab4 !important;;
+}
+
+::ng-deep .mat-select-value {
+    color: white;
+}
+
+::ng-deep .mat-select-panel {
+    background: #1f5d5f;
+}
+
+::ng-deep .mat-select-arrow {
+    color: white;
+}
+
+::ng-deep .mat-option-text {
+    color: white;
+}

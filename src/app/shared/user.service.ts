@@ -138,6 +138,11 @@ export class UserService {
     return this.http.get(this.BaseURI+'/WorkItem/WorkItems');
   }
 
+  getUserWorkItems(userId) {
+    return this.http.get(this.BaseURI+'/WorkItem/WorkItems/' + userId);
+  }
+
+
   getWorkItemStatuses() {
     return this.http.get(this.BaseURI+'/WorkItem/Statuses');
   }
@@ -166,7 +171,13 @@ export class UserService {
     return this.http.post(this.BaseURI+'/WorkItem/DeleteWorkItem', row);
   }
 
-  getTickets(userId) {
+  getTickets() {
+
+    return this.http.get(this.BaseURI+'/Ticket/Tickets');
+
+  }
+
+  getUserTickets(userId) {
 
     return this.http.get(this.BaseURI+'/Ticket/Tickets/' + userId);
 

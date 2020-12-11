@@ -20,6 +20,8 @@ import { TicketViewComponent } from './modules/tickets/ticket-view/ticket-view.c
 import { CreateProjectComponent } from './modules/projects/create-project/create-project.component';
 import { ProjectsComponent } from './modules/projects/projects.component';
 import { ProjectViewComponent } from './modules/projects/project-view/project-view.component';
+import { MyWorkItemsComponent } from './modules/workitems/my-work-items/my-work-items.component';
+import { MyTicketsComponent } from './modules/tickets/my-tickets/my-tickets.component';
 
 
 const routes: Routes = [
@@ -82,8 +84,13 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'myworkitems',
+        path: 'workitems',
         component: WorkItemsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'myworkitems',
+        component: MyWorkItemsComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -97,8 +104,13 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'mytickets',
+        path: 'tickets',
         component: TicketsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'mytickets',
+        component: MyTicketsComponent,
         canActivate: [AuthGuard]
       },
       {
