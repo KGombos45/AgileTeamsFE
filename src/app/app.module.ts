@@ -28,13 +28,14 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,13 +5,14 @@ import { UserService } from 'src/app/shared/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { _MAT_HINT } from '@angular/material/form-field';
 
+
 @Component({
-  selector: 'app-create-ticket',
-  templateUrl: './create-ticket.component.html',
-  styleUrls: ['./create-ticket.component.less'],
+  selector: 'app-ticket-view',
+  templateUrl: './ticket-view.component.html',
+  styleUrls: ['./ticket-view.component.less'],
   providers: [DatePipe]
 })
-export class CreateTicketComponent implements OnInit {
+export class TicketViewComponent implements OnInit {
 
   ticketModel : FormGroup;
   currentDate = new Date();
@@ -20,11 +21,14 @@ export class CreateTicketComponent implements OnInit {
   userInfo = JSON.parse(localStorage.getItem('User'));
   usersList;
   workItemsList;
+  ticket: any = [];
 
   constructor(private service: UserService, private fb: FormBuilder, private datePipe: DatePipe, private toastr: ToastrService) { }
 
+
   ngOnInit(): void {
 
+    this.getTicket();
     this.setTicketForm();
     this.getTicketStatuses();
     this.getTicketTypes();
@@ -33,9 +37,14 @@ export class CreateTicketComponent implements OnInit {
 
   }
 
+  getTicket() {
+    this.ticket = this.service.getTicket();
+  }
+
   setTicketForm() {
 
     this.ticketModel = this.fb.group({
+      ticketID: [null],
       ticketName: '',
       ticketDescription: '',
       ticketOwnerID: [null],
@@ -45,6 +54,8 @@ export class CreateTicketComponent implements OnInit {
       ticketTypeID: [null],
       ticketWorkItemID: [null]
     });
+
+    this.ticketModel.patchValue(this.ticket);
   }
 
   getTicketStatuses() {
@@ -81,15 +92,19 @@ export class CreateTicketComponent implements OnInit {
     );
   }
 
-  createTicket() {  
-    this.ticketModel.value.createdBy = this.userInfo.userName;
-    
-    this.service.createTicket(this.ticketModel).subscribe(res => {
-      this.toastr.success('Ticket created!', 'Ticket succesfully added to tickets repository.');
-    });
+  updateTicket() {
+    this.service.updateTicket(this.ticketModel.value).subscribe(res => {
+      this.toastr.success('Ticket infomation succesfully updated', 'Updated successfully');
+    });    
 
-    this.setTicketForm();
+    this.ticket = this.ticketModel.value;
+    this.resetForm();
+
   }
 
+  resetForm() {
+    setTimeout(() => this.setTicketForm(),800); 
+
+  }
 
 }

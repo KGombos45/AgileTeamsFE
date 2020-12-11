@@ -15,7 +15,9 @@ export const ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', isAdminLink: false, isProjectManagerLink: false},
   { path: '/manage-roles', title: 'Manage User Roles', icon: 'group_add', isAdminLink: true, isProjectManagerLink: false},
   { path: '/manage-users', title: 'Manage Project Users', icon: 'people_alt', isAdminLink: false, isProjectManagerLink: true},
-  { path: '/myprojects', title: 'My Projects', icon: 'code', isAdminLink: false, isProjectManagerLink: false},
+  { path: '/create-project', title: 'Add New Project', icon: 'add', isAdminLink: true, isProjectManagerLink: true },
+  { path: '/projects-list', title: 'Projects', icon: 'category', isAdminLink: false, isProjectManagerLink: false },
+  { path: '/myworkitems', title: 'My Work Items', icon: 'code', isAdminLink: false, isProjectManagerLink: false},
   { path: '/mytickets', title: 'My Tickets', icon: 'bug_report', isAdminLink: false, isProjectManagerLink: false},
   { path: '/user-profile/', title: 'User Profile', icon: 'person', isAdminLink: false, isProjectManagerLink: false}
 ];
@@ -39,10 +41,12 @@ export class SidebarComponent implements OnInit {
   }
 
   isVisibleLink(menuItem, role) {
-    if(menuItem.isAdminLink && role !== "Admin")
+    if(menuItem.isAdminLink && !menuItem.isProjectManagerLink && role !== "Admin")
       return false;
-    else if (menuItem.isProjectManagerLink && role !== "Project Manager")
+    else if (menuItem.isProjectManagerLink && !menuItem.isAdminLink && role !== "Project Manager")
       return false;
+    else if (menuItem.isProjectManagerLink && menuItem.isAdminLink && role === "Admin" || role === "Project Manager")
+      return true;
     else
       return true;      
   }

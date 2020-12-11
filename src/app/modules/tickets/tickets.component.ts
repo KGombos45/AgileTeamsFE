@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,24 +18,24 @@ import { DatePipe } from '@angular/common';
 export class TicketsComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['ticketName', 'ticketOwner', 'ticketProject', 'ticketStatus', 'createdBy', 'createdOn', 'actions'];
+  displayedColumns: string[] = ['ticketName', 'ticketOwner', 'ticketWorkItem', 'ticketStatus', 'createdBy', 'createdOn', 'actions'];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<any>;
   statuses;
   usersList;
-  projectsList;
+  workItemsList;
   userInfo = JSON.parse(localStorage.getItem('User'));
   currentDate = new Date();
 
 
-  constructor(private service: UserService, private toastr: ToastrService, private datePipe: DatePipe) { }
+  constructor(private service: UserService, private toastr: ToastrService, private datePipe: DatePipe, private router: Router) { }
 
   async ngOnInit() {
 
     this.getUsers();
     this.getTicketStatuses();
-    this.getProjects();
+    this.getWorkItems();
     this.getTickets();
   }
   
@@ -52,10 +53,10 @@ export class TicketsComponent implements OnInit {
     );
   }
 
-  getProjects() {
-    this.service.getProjects().subscribe(
+  getWorkItems() {
+    this.service.getWorkItems().subscribe(
       (res: any) => {
-        this.projectsList = res;
+        this.workItemsList = res;
       },
       err => {
         console.log(err);
@@ -98,16 +99,16 @@ export class TicketsComponent implements OnInit {
     });   
   }
 
-  onProjectChange(event, element) {
-    if (event.source.value !== element.ticketProject) {
-      element.ticketProject = event.source.value;
+  onWorkItemChange(event, element) {
+    if (event.source.value !== element.ticketWorkItem) {
+      element.ticketWorkItem = event.source.value;
       element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
       element.modifiedBy = this.userInfo.userName;
     }
 
 
     this.service.updateTicket(element).subscribe(res => {
-      this.toastr.success('Ticket project updated', 'Ticket status has been updated succesfully');
+      this.toastr.success('Ticket work item updated', 'Ticket status has been updated succesfully');
     });   
   }
 
@@ -123,12 +124,19 @@ export class TicketsComponent implements OnInit {
     });   
   }
 
+  viewTicket(element) {
+
+    this.service.setTicket(element);
+
+    this.router.navigate(['/ticket-view']);
+  }
+
   compareOwners(o1: any, o2: any): boolean {
     return o1.userName === o2;
   }
 
-  compareProjects(o1: any, o2: any): boolean {
-    return o1.projectName === o2;
+  compareWorkItems(o1: any, o2: any): boolean {
+    return o1.workItemName === o2;
   }
 
   compareStatuses(o1: any, o2: any): boolean {

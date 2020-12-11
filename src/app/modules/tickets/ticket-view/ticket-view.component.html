@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header card-header-danger">
-                <h4 class="card-title">Create New Ticket</h4>
-                <p class="card-category">Enter information for a new ticket</p>
+                <h4 class="card-title">Edit Ticket</h4>
+                <p class="card-category">Edit ticket information</p>
             </div>
             <div class="card-body">
-                <form [formGroup]="ticketModel" (submit)="createTicket()">                    
+                <form [formGroup]="ticketModel" (submit)="updateTicket()" (reset)="resetForm">                    
                     <div class="row">
                         <div class="col-md-4">
                             <mat-form-field class="full-width">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button mat-flat-button class="btn-submit" type="submit">Create</button>
+                            <button mat-flat-button class="btn-submit" type="submit">Update</button>
                             <button mat-flat-button class="btn-reset" type="button" [routerLink]="'/mytickets'">Cancel</button>
                         </div>
                     </div>

@@ -23,6 +23,9 @@ export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
   readonly BaseURI = 'https://localhost:44332/api';
+  workItem = [];
+  ticket = [];
+  project = [];
 
 
   registrationModel = this.fb.group({
@@ -66,6 +69,30 @@ export class UserService {
     return this.http.post(this.BaseURI+'/ApplicationUser/Login', formData);
   }
 
+  setWorkItem(data) {
+    this.workItem = data;
+  }
+
+  getWorkItem() {
+    return this.workItem;
+  }
+
+  setProject(data) {
+    this.project = data;
+  }
+
+  getProject() {
+    return this.project;
+  }
+
+  setTicket(data) {
+    this.ticket = data;
+  }
+
+  getTicket() {
+    return this.ticket;
+  }
+
   getUsers() {
     return this.http.get(this.BaseURI+'/Administration/Users');
   }
@@ -90,28 +117,53 @@ export class UserService {
     return this.http.post(this.BaseURI+'/Administration/DeleteUser/' + id, row);
   }
 
+  createProject(projectModel) {
+    return this.http.post(this.BaseURI+'/Project/Create', projectModel.value)
+  }
+
   getProjects() {
     return this.http.get(this.BaseURI+'/Project/Projects');
   }
 
-  getProjectStatuses() {
-    return this.http.get(this.BaseURI+'/Project/Statuses');
+  updateProject(projectModel) {
+    return this.http.put(this.BaseURI+'/Project/UpdateProject', projectModel.value);
+  }
+
+
+  deleteProject(row) {
+    return this.http.post(this.BaseURI+'/Project/DeleteProject', row);
+  }
+
+  getWorkItems() {
+    return this.http.get(this.BaseURI+'/WorkItem/WorkItems');
+  }
+
+  getWorkItemStatuses() {
+    return this.http.get(this.BaseURI+'/WorkItem/Statuses');
+  }
+
+  getWorkItemTypes() {
+    return this.http.get(this.BaseURI+'/WorkItem/Types');
   }
 
   getTicketStatuses() {
     return this.http.get(this.BaseURI+'/Ticket/Statuses');
   }
 
-  createProject(projectModel) {
-    return this.http.post(this.BaseURI+'/Project/Create', projectModel.value)
+  getTicketTypes() {
+    return this.http.get(this.BaseURI+'/Ticket/Types');
   }
 
-  updateProject(element) {
-    return this.http.put(this.BaseURI+'/Project/UpdateProject', element);
+  createWorkItem(workItemModel) {
+    return this.http.post(this.BaseURI+'/WorkItem/Create', workItemModel.value)
   }
 
-  deleteProject(row) {
-    return this.http.post(this.BaseURI+'/Project/DeleteProject', row);
+  updateWorkItem(element) {
+    return this.http.put(this.BaseURI+'/WorkItem/UpdateWorkItem', element);
+  }
+
+  deleteWorkItem(row) {
+    return this.http.post(this.BaseURI+'/WorkItem/DeleteWorkItem', row);
   }
 
   getTickets(userId) {

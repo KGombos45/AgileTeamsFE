@@ -6,6 +6,18 @@
 
       <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
           <ul fxLayout="row" fxLayoutGap="20px">
+            <!-- <li>
+              <button mat-button [matMenuTriggerFor]="projects" *ngIf="projects">
+                  <mat-icon>person</mat-icon>
+                  {{project.projectName}}
+              </button>
+              <mat-menu #project="matMenu">
+                  <button mat-menu-item [routerLink]="'/user-profile/'">
+                    <mat-icon>account_box</mat-icon>
+                    Edit Profile
+                </button>
+              </mat-menu>
+          </li> -->
               <li>
                   <button mat-button [matMenuTriggerFor]="notifications">
                       NOTIFICATIONS <mat-icon matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications_none</mat-icon>

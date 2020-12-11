@@ -5,10 +5,15 @@ import { DefaultComponent } from './default.component';
 import { DashboardComponent } from '../../modules/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../modules/user-profile/user-profile.component';
 import { ManageRolesComponent } from '../../modules/manage-roles/manage-roles.component';
-import { ProjectsComponent } from '../../modules/projects/projects.component';
-import { CreateProjectComponent } from '../../modules/projects/create-project/create-project.component'
+import { WorkItemsComponent } from '../../modules/workitems/workitems.component';
+import { CreateWorkItemComponent } from '../../modules/workitems/create-workitem/create-workitem.component'
+import { WorkItemViewComponent } from '../../modules/workitems/workitem-view/workitem-view.component';
+import { TicketViewComponent } from '../../modules/tickets/ticket-view/ticket-view.component';
 import { TicketsComponent } from '../../modules/tickets/tickets.component';
 import { CreateTicketComponent } from '../../modules/tickets/create-ticket/create-ticket.component'
+import { CreateProjectComponent } from '../../modules/projects/create-project/create-project.component';
+import { ProjectsComponent } from '../../modules/projects/projects.component';
+import { ProjectViewComponent } from '../../modules/projects/project-view/project-view.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,10 +38,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     DashboardComponent,
     UserProfileComponent,
     ManageRolesComponent,
-    ProjectsComponent,
-    CreateProjectComponent,
+    WorkItemsComponent,
+    CreateWorkItemComponent,
+    WorkItemViewComponent,
     TicketsComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    TicketViewComponent,
+    ProjectsComponent,
+    CreateProjectComponent,    
+    ProjectViewComponent
   ],
   imports: [
     CommonModule,

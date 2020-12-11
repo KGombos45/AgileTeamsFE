@@ -62,6 +62,7 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.service.getUserAccount().toPromise().then(data => {
+      debugger;
       this.editModel.patchValue(data);
     });
     this.editModel.get('userName').disable();
@@ -71,15 +72,14 @@ export class UserProfileComponent implements OnInit {
     this.editModel.get('userName').enable();
     this.service.updateUserAccount(this.userInfo.id, this.editModel).subscribe(res => {
       this.toastr.success('User account infomation succesfully updated', 'Updated successfully');
-    });
-    
-    this.editModel.reset();
+    });    
+
     this.resetForm();
 
   }
 
   resetForm() {
-    this.getUserAccount();
-    this.setUserAccountValues();
+    setTimeout(() => this.setUserAccountValues(),800); 
+
   }
 }
