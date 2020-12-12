@@ -151,6 +151,10 @@ export class UserService {
     return this.http.get(this.BaseURI+'/WorkItem/Types');
   }
 
+  getWorkItemPriorities() {
+    return this.http.get(this.BaseURI+'/WorkItem/Priorities');
+  }
+
   getTicketStatuses() {
     return this.http.get(this.BaseURI+'/Ticket/Statuses');
   }

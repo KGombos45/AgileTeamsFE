@@ -14,13 +14,21 @@
                                 <input matInput formControlName="workItemName">
                             </mat-form-field>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-3">
                             <mat-form-field class="full-width">
                                 <mat-label>Project</mat-label>
                                 <mat-select formControlName="workItemProjectID">
                                     <mat-option *ngFor="let project of projects" [value]="project.projectID">{{project.projectName}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <mat-form-field class="full-width">
+                                <mat-label>Priority</mat-label>
+                                <mat-select formControlName="workItemPriorityID">
+                                    <mat-option *ngFor="let priority of priorities" [value]="priority.priorityID">{{priority.priorityName}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

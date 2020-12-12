@@ -65,7 +65,7 @@ export class MyTicketsComponent implements OnInit {
   deleteTicket(row) {
     this.service.deleteTicket(row).subscribe(res => {
       this.toastr.warning('Ticket deleted', 'Updated successfully');
-      this.getTickets();
+      this.getUserTickets();
     });    
     
     this.table.renderRows();

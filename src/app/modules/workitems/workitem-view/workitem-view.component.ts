@@ -18,6 +18,7 @@ export class WorkItemViewComponent implements OnInit {
   statuses;
   types;
   projects;
+  priorities;
   userInfo = JSON.parse(localStorage.getItem('User'));
   usersList;
 
@@ -29,6 +30,7 @@ export class WorkItemViewComponent implements OnInit {
     this.getWorkItemStatuses();
     this.getWorkItemProjects();
     this.getWorkItemTypes();
+    this.getWorkItemPriorities();
     this.getUsers();
     this.setWorkItemForm();
 
@@ -42,6 +44,7 @@ export class WorkItemViewComponent implements OnInit {
       workItemDescription: '',
       workItemStatusID: [null],
       workItemProjectID: [null],
+      workItemPriorityID: [null],
       workItemTypeID: [null],
       workItemOwnerID: [null],
       workItemOwner: [null],
@@ -76,6 +79,12 @@ export class WorkItemViewComponent implements OnInit {
   getWorkItemTypes() {
     this.service.getWorkItemTypes().subscribe(res => {
       this.types = res;
+    });
+  }
+
+  getWorkItemPriorities() {
+    this.service.getWorkItemPriorities().subscribe(res => {
+      this.priorities = res;
     });
   }
 

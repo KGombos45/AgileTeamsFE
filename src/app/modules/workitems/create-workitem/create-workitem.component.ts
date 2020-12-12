@@ -20,6 +20,7 @@ export class CreateWorkItemComponent implements OnInit {
   projects;
   userInfo = JSON.parse(localStorage.getItem('User'));
   usersList;
+  priorities;
   
 
   constructor(private service: UserService, private fb: FormBuilder, private datePipe: DatePipe, private toastr: ToastrService) { }
@@ -30,6 +31,7 @@ export class CreateWorkItemComponent implements OnInit {
     this.getWorkItemProjects();
     this.getWorkItemStatuses();
     this.getWorkItemTypes();
+    this.getWorkItemPriorities();
     this.getUsers();
 
   }
@@ -43,6 +45,7 @@ export class CreateWorkItemComponent implements OnInit {
       workItemProjectID: [null],
       workItemTypeID: [null],
       workItemOwnerID: [null],
+      workItemPriorityID: [null],
       createdOn: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       createdBy: [null],
       startDate: [null],
@@ -65,6 +68,12 @@ export class CreateWorkItemComponent implements OnInit {
   getWorkItemTypes() {
     this.service.getWorkItemTypes().subscribe(res => {
       this.types = res;
+    });
+  }
+
+  getWorkItemPriorities() {
+    this.service.getWorkItemPriorities().subscribe(res => {
+      this.priorities = res;
     });
   }
 

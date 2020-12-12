@@ -14,6 +14,14 @@
                                 <input matInput formControlName="ticketName">                            
                             </mat-form-field>
                         </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="full-width">
+                                <mat-label>Work Item</mat-label>
+                                <mat-select formControlName="ticketWorkItemID">
+                                    <mat-option *ngFor="let workItem of workItemsList" [value]="workItem.workItemID">{{ workItem.workItemName }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
@@ -46,16 +54,6 @@
                             <mat-form-field class="full-width">
                                 <mat-label>Description</mat-label>
                                 <textarea matInput formControlName="ticketDescription"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width">
-                                <mat-label>Work Item</mat-label>
-                                <mat-select formControlName="ticketWorkItemID">
-                                    <mat-option *ngFor="let workItem of workItemsList" [value]="workItem.workItemID">{{ workItem.workItemName }}</mat-option>
-                                </mat-select>
                             </mat-form-field>
                         </div>
                     </div>

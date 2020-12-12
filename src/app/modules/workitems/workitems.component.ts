@@ -26,12 +26,13 @@ import { Router } from '@angular/router';
 export class WorkItemsComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['workItemName', 'workItemStatusName', 'workItemOwner', 'workItemProject', 'createdBy', 'startDate', 'targetEndDate', 'actions'];
+  displayedColumns: string[] = ['workItemName', 'workItemStatusName', 'workItemOwner', 'workItemPriorityName', 'workItemProject', 'createdBy', 'targetEndDate', 'actions'];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<any>;
   workItemStatuses;
   workItemTypes;
+  workItemPriorities;
   ticketStatuses;
   usersList;
   projects;
@@ -46,6 +47,7 @@ export class WorkItemsComponent implements OnInit {
     this.getWorkItemProjects();
     this.getWorkItemStatuses();
     this.getTicketStatuses();
+    this.getWorkItemPriorities();
     this.getWorkItems();
 
   }
@@ -94,6 +96,12 @@ export class WorkItemsComponent implements OnInit {
     });
   }
 
+  getWorkItemPriorities() {
+    this.service.getWorkItemPriorities().subscribe(res => {
+      this.workItemPriorities = res;
+    })
+  }
+
   onStatusChange(event, element) {
     if (event.source.value !== element.workItemStatus) {
       element.workItemStatus = event.source.value;
@@ -105,6 +113,19 @@ export class WorkItemsComponent implements OnInit {
       this.toastr.success('Work item status updated', 'Work item status has been updated succesfully');
     });   
   }
+
+  onPriorityChange(event, element) {
+    if (event.source.value !== element.workItemPriority) {
+      element.workItemPriority = event.source.value;
+      element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
+      element.modifiedBy = this.userInfo.userName;
+    }
+
+    this.service.updateWorkItem(element).subscribe(res => {
+      this.toastr.success('Work item priority updated', 'Work item priority has been updated succesfully');
+    });   
+  }
+
 
   onProjectChange(event, element) {
     if (event.source.value !== element.project) {
@@ -229,8 +250,12 @@ onTicketOwnerChange(event, element) {
     return o1.statusName === o2.statusName && o1.statusID === o2.statusID;
   }
 
+  comparePriorities(o1: any, o2: any): boolean {
+    return o1.priorityName === o2.priorityName && o1.priorityID === o2.priorityID;
+  }
+
+
   compareProjects(o1: any, o2: any): boolean {
-    debugger;
     return o1.projectName === o2.projectName;
   }
 
