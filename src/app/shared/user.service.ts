@@ -70,11 +70,11 @@ export class UserService {
   }
 
   setWorkItem(data) {
-    this.workItem = data;
+    localStorage.setItem('WorkItem', JSON.stringify(data));
   }
 
   getWorkItem() {
-    return this.workItem;
+    return JSON.parse(localStorage.getItem('WorkItem'));
   }
 
   setProject(data) {
@@ -93,6 +93,14 @@ export class UserService {
     return this.ticket;
   }
 
+  setProfileUserID(data) {
+    localStorage.setItem('UserID', JSON.stringify(data));
+  }
+
+  getProfileUserID() {
+    return JSON.parse(localStorage.getItem('UserID'));
+  }
+
   getUsers() {
     return this.http.get(this.BaseURI+'/Administration/Users');
   }
@@ -107,6 +115,10 @@ export class UserService {
 
   getUserAccount() {
     return this.http.get(this.BaseURI+'/UserAccount');
+  }
+
+  getUserAccountView(userId) {
+    return this.http.get(this.BaseURI+'/UserAccount/GetProjectUserProfile/'+ userId);
   }
 
   updateUserAccount(id, editModel) {
@@ -138,6 +150,10 @@ export class UserService {
     return this.http.get(this.BaseURI+'/WorkItem/WorkItems');
   }
 
+  getWorkItemUsers(workItem) {
+    return this.http.post(this.BaseURI+'/WorkItem/Users/' + workItem.workItemID, workItem);
+  }
+
   getUserWorkItems(userId) {
     return this.http.get(this.BaseURI+'/WorkItem/WorkItems/' + userId);
   }
@@ -164,7 +180,11 @@ export class UserService {
   }
 
   createWorkItem(workItemModel) {
-    return this.http.post(this.BaseURI+'/WorkItem/Create', workItemModel.value)
+    return this.http.post(this.BaseURI+'/WorkItem/Create', workItemModel.value);
+  }
+
+  createWorkItemComment(workItemComment) {
+    return this.http.post(this.BaseURI+'/WorkItem/AddComment', workItemComment);
   }
 
   updateWorkItem(element) {

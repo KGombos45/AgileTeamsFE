@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from '../../modules/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../modules/user-profile/user-profile.component';
+import { UserProfileViewComponent } from '../../modules/user-profile/user-profile-view/user-profile-view.component';
 import { ManageRolesComponent } from '../../modules/manage-roles/manage-roles.component';
 import { WorkItemsComponent } from '../../modules/workitems/workitems.component';
 import { CreateWorkItemComponent } from '../../modules/workitems/create-workitem/create-workitem.component'
@@ -32,13 +33,17 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+};
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
     UserProfileComponent,
+    UserProfileViewComponent,
     ManageRolesComponent,
     WorkItemsComponent,
     CreateWorkItemComponent,
@@ -71,8 +76,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSortModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatNativeDateModule  
+    MatNativeDateModule,
+    PerfectScrollbarModule  
   ],
+  providers:[{
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+}],
   entryComponents: [UserProfileComponent]
 })
 export class DefaultModule { }

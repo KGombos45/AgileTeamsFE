@@ -3,7 +3,6 @@ import { UserService } from 'src/app/shared/user.service';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
@@ -24,9 +23,8 @@ import { Router } from '@angular/router';
 export class MyWorkItemsComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['workItemName', 'workItemStatusName', 'workItemOwner', 'workItemPriorityName', 'workItemProject', 'createdBy', 'targetEndDate', 'actions'];
+  displayedColumns: string[] = ['workItemName', 'workItemStatusName', 'workItemOwner', 'workItemPriorityName', 'workItemProject', 'createdBy', 'startDate', 'targetEndDate', 'actions'];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<any>;
   workItemStatuses;
   workItemTypes;
@@ -139,6 +137,7 @@ export class MyWorkItemsComponent implements OnInit {
   onOwnerChange(event, element) {
     if (event.source.value !== element.workItemOwner) {
       element.workItemOwnerID = event.source.value.id;
+      element.workItemOwner = event.source.value;
       element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
       element.modifiedBy = this.userInfo.userName;
     }
@@ -203,7 +202,6 @@ onTicketOwnerChange(event, element) {
       (res: any) => {
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
         this.setIsExpanded(this.dataSource.data);
       },
       err => {
@@ -242,6 +240,14 @@ onTicketOwnerChange(event, element) {
 
     this.router.navigate(['/workitem-view']);
   }
+
+  viewWorkItemTicket(ticket) {
+
+    this.service.setTicket(ticket);
+
+    this.router.navigate(['/ticket-view']);
+  }
+
 
   compareStatuses(o1: any, o2: any): boolean {
     return o1.statusName === o2.statusName && o1.statusID === o2.statusID;

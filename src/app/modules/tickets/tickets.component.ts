@@ -114,6 +114,7 @@ export class TicketsComponent implements OnInit {
   onOwnerChange(event, element) {
     if (event.source.value !== element.ticketOwner) {
       element.ticketOwnerID = event.source.value.id;
+      element.ticketOwner = event.source.value;
       element.modifiedOn = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');
       element.modifiedBy = this.userInfo.userName;
     }
@@ -131,7 +132,7 @@ export class TicketsComponent implements OnInit {
   }
 
   compareOwners(o1: any, o2: any): boolean {
-    return o1.userName === o2;
+    return o1.userName === o2.userName;
   }
 
   compareWorkItems(o1: any, o2: any): boolean {

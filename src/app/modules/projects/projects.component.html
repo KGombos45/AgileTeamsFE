@@ -11,13 +11,18 @@
                         <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-project'">
                             <mat-icon>add</mat-icon>
                             Add New
-                        </button>    
-                        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                        </button>   
+                        <perfect-scrollbar class="table-responsive">
+                        <table mat-table [dataSource]="dataSource" matSort>
 
                             <!-- Project Name Column -->
                             <ng-container matColumnDef="projectName">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                <td mat-cell *matCellDef="let element"> {{element.projectName}} </td>
+                                <td mat-cell *matCellDef="let element"> 
+                                    <button class="btn-link" (click)="viewProject(element)">
+                                        {{element.projectName}}
+                                    </button>                                
+                                </td>
                             </ng-container>
 
                             <!-- Ticket Owner Column -->
@@ -39,22 +44,19 @@
                             </ng-container>
 
                             <ng-container matColumnDef="actions">
-                                <th mat-header-cell *matHeaderCellDef>Delete/Open</th>
+                                <th mat-header-cell *matHeaderCellDef></th>
                                 <mat-cell *matCellDef="let row">
                                     <button mat-flat-button class="btn-delete" (click)="deleteProject(row)">
                                         <mat-icon>delete_outline</mat-icon>
                                     </button>
-                                    <button mat-flat-button class="btn-open" (click)="viewProject(row)">
-                                        <mat-icon>open_in_new</mat-icon>
-                                    </button>
                                 </mat-cell>
                             </ng-container>
 
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             
                         </table>
-                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>         
+                    </perfect-scrollbar> 
                     </div>
                 </div>
             </div>

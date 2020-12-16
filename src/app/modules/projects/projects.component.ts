@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
@@ -19,7 +18,6 @@ export class ProjectsComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['projectName', 'projectDescription', 'createdBy', 'createdOn', 'actions'];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<any>;
   currentDate = new Date();
 
@@ -37,7 +35,6 @@ export class ProjectsComponent implements OnInit {
         debugger;
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
       },
       err => {
         console.log(err);

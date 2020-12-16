@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { UserProfileViewComponent } from './modules/user-profile/user-profile-view/user-profile-view.component';
 import { ManageRolesComponent } from './modules/manage-roles/manage-roles.component';
 import { ManageUsersComponent } from './modules/manage-users/manage-users.component';
 import { WorkItemsComponent } from './modules/workitems/workitems.component';
@@ -56,6 +57,11 @@ const routes: Routes = [
       {
         path: 'user-profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'user-profile-view',
+        component: UserProfileViewComponent,
         canActivate: [AuthGuard]
       },
       {

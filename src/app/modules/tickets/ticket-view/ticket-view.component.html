@@ -9,13 +9,13 @@
                 <form [formGroup]="ticketModel" (submit)="updateTicket()" (reset)="resetForm">                    
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container">
                                 <mat-label>Ticket name</mat-label>
                                 <input matInput formControlName="ticketName">                            
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container">
                                 <mat-label>Work Item</mat-label>
                                 <mat-select formControlName="ticketWorkItemID">
                                     <mat-option *ngFor="let workItem of workItemsList" [value]="workItem.workItemID">{{ workItem.workItemName }}</mat-option>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container">
                                 <mat-label>Type</mat-label>
                                 <mat-select formControlName="ticketTypeID">
                                     <mat-option *ngFor="let type of types" [value]="type.typeID">{{type.typeName}}</mat-option>
@@ -33,7 +33,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container">
                                 <mat-label>State</mat-label>
                                 <mat-select formControlName="ticketStatusID">
                                     <mat-option *ngFor="let status of statuses" [value]="status.statusID">{{status.statusName}}</mat-option>
@@ -41,7 +41,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container">
                                 <mat-label>Ticket Owner</mat-label>
                                 <mat-select formControlName="ticketOwnerID">
                                     <mat-option *ngFor="let user of usersList" [value]="user.id">{{user.userName}}</mat-option>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <mat-form-field class="full-width">
+                            <mat-form-field class="full-width user-profile-textbox-container-about">
                                 <mat-label>Description</mat-label>
                                 <textarea matInput formControlName="ticketDescription"></textarea>
                             </mat-form-field>

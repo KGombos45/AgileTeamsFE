@@ -7,9 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-
-
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ManageRolesComponent implements OnInit {
 
-  constructor(private service: UserService, private formBuilder: FormBuilder, private dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(private service: UserService, private formBuilder: FormBuilder, private dialog: MatDialog, private toastr: ToastrService, private router: Router) { }
 
   roles = [];
 
@@ -81,8 +79,17 @@ export class ManageRolesComponent implements OnInit {
 
   updateRole(row) {
     row.isRoleChanged = false;
+    debugger;
     this.service.updateUserRoles(row.id, row).subscribe(res => {
       this.toastr.success('User role succesfully updated', 'Updated successfully');
     });   
   }
+
+  viewUserProfile(element) {
+
+    this.service.setProfileUserID(element);
+    
+    this.router.navigate(['/user-profile-view']);
+  }
+
 }

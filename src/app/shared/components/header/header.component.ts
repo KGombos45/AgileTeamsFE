@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
 
@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserAccount();
+    // this.getUserAccountAndRole();
   }
 
   onLogout() {
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   getUserAccount() {
     this.service.getUserAccount().subscribe(
       res => {
+        debugger;
         this.userInfo = res;
         localStorage.setItem('User', JSON.stringify(this.userInfo));
       },
@@ -33,4 +35,16 @@ export class HeaderComponent implements OnInit {
       },
     );
   }
+
+  // getUserAccountAndRole() {
+  //   this.service.getUserAccountAndRole().subscribe(
+  //     res => {        
+  //       debugger;
+  //       localStorage.setItem('UserAccountAndRole', JSON.stringify(res));
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     },
+  //   );
+  // }
 }
