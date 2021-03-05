@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-workitem-view',
   templateUrl: './workitem-view.component.html',
-  styleUrls: ['./workitem-view.component.less'],
+  styleUrls: ['./workitem-view.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class WorkItemViewComponent implements OnInit {

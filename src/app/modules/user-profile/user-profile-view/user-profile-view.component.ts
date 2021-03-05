@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile-view',
   templateUrl: './user-profile-view.component.html',
-  styleUrls: ['./user-profile-view.component.less']
+  styleUrls: ['./user-profile-view.component.less', '../../../layouts/default/default.component.less']
 })
 export class UserProfileViewComponent implements OnInit {
   

@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-workitem',
   templateUrl: './create-workitem.component.html',
-  styleUrls: ['./create-workitem.component.less'],
+  styleUrls: ['./create-workitem.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class CreateWorkItemComponent implements OnInit {

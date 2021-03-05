@@ -1,5 +1,5 @@
 <div class="main-content">
-    <div class="container-fluid">
+    <div class="container left">
         <div class="card card-workItem">
             <div class="card-header card-header-danger">
                 <h4 class="card-title">Edit Work Item</h4>
@@ -98,7 +98,8 @@
                 </form>
             </div>
         </div>
-        <div class="container">
+    </div>
+    <div class="container right">
         <div class="row">
             <div class="card card-small">
                 <div class="card-header card-header-danger">
@@ -107,19 +108,25 @@
                 </div>
                 <div class="card-body">
                     <perfect-scrollbar class="table-responsive">
-                        <div class="container" *ngFor="let comment of workItem.comments">
-                            <div class="message-sender" [class.from-them-sender]="comment.submittedBy != userInfo.userName"
-                            [class.from-me-sender]="comment.submittedBy == userInfo.userName">
-                            
-                            <span *ngIf="comment.submittedBy != userInfo.userName">{{comment.submittedBy}}: {{comment.userName }}</span>
-                            <span *ngIf="comment.submittedBy == userInfo.userName">You:</span>
-                        </div>
+                        <div class="container messages-container" *ngFor="let comment of workItem.comments">
+
                             <div class="message">
+                                <div class="message-sender"
+                                [class.from-them-sender]="comment.submittedBy != userInfo.userName"
+                                [class.from-me-sender]="comment.submittedBy == userInfo.userName">
+
+                                <span *ngIf="comment.submittedBy != userInfo.userName">{{comment.submittedBy}}:
+                                    {{comment.userName }}</span>
+                                <span *ngIf="comment.submittedBy == userInfo.userName">You:</span>
+                                </div>
                                 <div class="bubble-mark" [class.from-them]="comment.submittedBy != userInfo.userName"
-                                [class.from-me]="comment.submittedBy == userInfo.userName"> {{comment.comment}}
-                            </div>
-                            <span class="message-time" [class.from-them-time]="comment.submittedBy != userInfo.userName"
-                            [class.from-me-time]="comment.submittedBy == userInfo.userName">{{comment.submittedOn | date:'short'}}</span>
+                                    [class.from-me]="comment.submittedBy == userInfo.userName"> {{comment.comment}}
+                                </div>
+                                <div class="message-time"
+                                    [class.from-them-time]="comment.submittedBy != userInfo.userName"
+                                    [class.from-me-time]="comment.submittedBy == userInfo.userName">{{comment.submittedOn
+                                    | date:'short'}}
+                                </div>
                             </div>
                         </div>
 
@@ -154,10 +161,12 @@
                             <ng-container matColumnDef="userName">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
                                 <td mat-cell *matCellDef="let element">
-                                    <button class="btn-link" *ngIf="element.workItemOwner" (click)="viewUserProfile(element.workItemOwner.id)">
+                                    <button class="btn-link" *ngIf="element.workItemOwner"
+                                        (click)="viewUserProfile(element.workItemOwner.id)">
                                         {{element.workItemOwner.userName }}
                                     </button>
-                                    <button class="btn-link" *ngIf="element.ticketOwner" (click)="viewUserProfile(element.ticketOwner.id)">
+                                    <button class="btn-link" *ngIf="element.ticketOwner"
+                                        (click)="viewUserProfile(element.ticketOwner.id)">
                                         {{element.ticketOwner.userName }}
                                     </button>
                                 </td>
@@ -188,6 +197,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </div>

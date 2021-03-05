@@ -8,7 +8,7 @@ import { _MAT_HINT } from '@angular/material/form-field';
 @Component({
   selector: 'app-create-ticket',
   templateUrl: './create-ticket.component.html',
-  styleUrls: ['./create-ticket.component.less'],
+  styleUrls: ['./create-ticket.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class CreateTicketComponent implements OnInit {

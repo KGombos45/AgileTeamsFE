@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-manage-roles',
   templateUrl: './manage-roles.component.html',
-  styleUrls: ['./manage-roles.component.less']
+  styleUrls: ['./manage-roles.component.less', '../../layouts/default/default.component.less']
 })
 export class ManageRolesComponent implements OnInit {
 

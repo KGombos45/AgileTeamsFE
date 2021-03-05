@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.less'],
+  styleUrls: ['./tickets.component.less', '../../layouts/default/default.component.less'],
   providers: [DatePipe]
 
 })

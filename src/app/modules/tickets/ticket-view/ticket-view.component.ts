@@ -9,7 +9,7 @@ import { _MAT_HINT } from '@angular/material/form-field';
 @Component({
   selector: 'app-ticket-view',
   templateUrl: './ticket-view.component.html',
-  styleUrls: ['./ticket-view.component.less'],
+  styleUrls: ['./ticket-view.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class TicketViewComponent implements OnInit {

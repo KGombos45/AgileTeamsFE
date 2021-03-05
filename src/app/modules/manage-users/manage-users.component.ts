@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
-  styleUrls: ['./manage-users.component.less']
+  styleUrls: ['./manage-users.component.less', '../../layouts/default/default.component.less']
 })
 export class ManageUsersComponent implements OnInit {
 

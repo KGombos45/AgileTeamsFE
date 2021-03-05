@@ -1,32 +1,23 @@
 @import '~animate.css/animate.min.css';
 @import '../../../../styles.less';
 
-.main-content{
-    height: 100vh;
+
+
+.container {
+    width: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -80px;
-  }
 
-  .container-fluid {
-      display: inherit;
-  }
+    &.left {
+        flex-direction: row;
+    }
 
-  .card {
-      width: auto;
-      margin: 0 auto;
-      background: #1905235c;
-      color: white; 
-      border-radius: 8px;   
-      box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-
-  }
-
-
+    &.right {
+        flex-direction: column;
+    }
+}
 .card-workItem {
-    width: 100%;
+    width: 100% !important;
+    min-width: 750px !important;
     height: 565px;
     margin-top: 70px;
     margin-left: 40px;
@@ -40,7 +31,8 @@
   .card-small {
     margin-left: 30px;
     height: 345px;
-    width: 90%;
+    width: 100% !important;
+    min-width: 500px !important;
 
       tr {
         &:hover {
@@ -56,95 +48,6 @@
         margin: 0px auto;
         padding: 0px;
         margin-bottom: 10px;
-
-        
-    .message {
-        max-width: 255px;
-        word-wrap: break-word;
-        margin-bottom: 12px;
-        line-height: 24px;
-        position:relative;
-        padding: 0px 20px;
-        border-radius:25px;
-        
-        &:before, &:after {
-          content:"";
-              position:absolute;
-          bottom:-2px;
-          height:20px;
-        }
-    }
-    
-    .from-them {
-        background: #d0d0d0;
-        border-radius: 20px;
-        padding: 5px;
-        padding-left: 10px;
-        position: relative;
-        left: -10px
-    }
-
-    .from-me {
-        background:#0B93F6; 
-        border-radius: 20px;
-        padding: 5px;
-        padding-left: 10px;
-        position: relative;
-        left: 315px;
-
-        .bubble-mark {
-
-            &:before {
-                content: '';
-                right:-7px;
-                border-right:20px solid #0B93F6;
-                border-bottom-left-radius: 16px 14px;
-                transform:translate(0, -2px);
-            }
-        
-            &:after {
-                content: '';
-    
-                right:-56px;
-                width:26px;
-                background:white;
-                border-bottom-left-radius: 10px;
-                transform:translate(-30px, -2px);
-            }
-        }
-
-    }
-
-    .message-time {
-
-        &.from-them-time {
-            position: relative;
-            left: 92px;
-            font-size: 12px;
-        }
-    
-        &.from-me-time {
-            position: relative;
-            left: 418px;
-            font-size: 12px;
-        }
-
-    }
-    
-    .message-sender {
-
-        &.from-them-sender {
-            position: relative;
-            left: 15px;
-        }
-    
-        &.from-me-sender {
-            position: relative;
-            left: 345px;
-            font-size: 12px;
-        }
-
-    }
     
         table {
             width: 100%;
@@ -204,98 +107,6 @@
     }
   }
 
-  .card-header {
-    width: 98%;
-    background: linear-gradient(60deg, #0f4157, #134d63);
-    position: absolute;
-    top: -12px;
-    left: 8px;
-    border-radius: 8px;   
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(70,182,168,.55);
-
-    h4, p {
-        margin-bottom: 4px;
-    }
-
-    p {
-        color: #e2e2e2;
-    }
-  }
-
-  .card-body {
-      margin-top: 60px;
-  }
-
-  .full-width {
-      width: 100%;
-  }
-
-.mat-flat-button.mat-button-disabled {
-    &.btn-submit {        
-        color: #ffffff94;
-        background-color: #3faf61b8;
-        cursor: not-allowed;
-    }
-
-    &.btn-reset {
-        background-color: #58c7be80;
-        color: #ffffff94;
-        cursor: not-allowed;
-    }
-}
-
-.mat-flat-button {
-
-    &.btn-submit {
-        background: #3faf61;
-        color: white;
-        float: right;
-    
-        &:hover {
-            background: #3a9e58;
-        }
-    }
-
-    &.btn-reset {
-        background: #58c7be;
-        color: white;
-        float: right;
-        margin-right: 10px;
-    
-        &:hover {
-            background: #4fb3ab;
-        }
-    }
-
-    
-    &.btn-create {
-        background: #3faf61;
-        color: white;
-        float: left;
-        margin-bottom: 15px;
-    
-        &:hover {
-            background: #3a9e58;
-        }
-    }
-
-}
-
-
-&.btn-link {
-    background: transparent;
-    color: #95f3f3;
-    font-weight: bold;
-    border: none;
-    padding: 0;
-    margin-right: 20px;
-    text-decoration: underline;
-
-    &:hover {
-        color: #a7f7ef;
-    }
-}
-
 .user-profile-textbox-label {
     padding-left: 5px;
 }
@@ -320,89 +131,8 @@
 
 }
 
-
-mat-label {
-    color: #f1f1f1;   
-}
-
-.mat-input-element {
-    caret-color: #58c7ce;
-
-    &.readOnly {
-        cursor: not-allowed;
-        color: black;
-    }
-}
-
 textarea.mat-input-element {
     height: 325px;
     max-height: 400px;
 }
 
-::ng-deep .mat-datepicker-toggle {
-    color: rgb(255,255,255, .68);
-}
-
-::ng-deep .mat-datepicker-content {
-
-    background-color: #1f5d5f;
-
-    .mat-button {
-        color: white;
-
-        .mat-calendar-arrow {
-            border-top-color: white;
-        }
-    }
-
-    .mat-calendar-previous-button, .mat-calendar-next-button {
-        color: #3faf8b
-    }
-
-    .mat-calendar-table-header {
-        color: #79e6c8;
-    }
-
-    .mat-calendar-body-label {
-        color: white;
-    }
-
-    .mat-calendar-body-cell-content {
-        color: white;
-    }
-    
-}
-
-// mat-label error style
-::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
-    caret-color: red !important;
-}
-
-::ng-deep.mat-form-field-disabled {
-    .mat-input-element {
-        color: #d6d6d6 !important;
-    }    
-}
-
-::ng-deep .mat-form-field-underline {
-    background-color: #38aab4 !important;;
-}
-::ng-deep .mat-form-field-ripple {
-    background-color: #58c7ce !important;
-}
-
-::ng-deep .mat-select-value {
-    color: white;
-}
-
-::ng-deep .mat-select-panel {
-    background: #1f5d5f;
-}
-
-::ng-deep .mat-select-arrow {
-    color: white;
-}
-
-::ng-deep .mat-option-text {
-    color: white;
-}

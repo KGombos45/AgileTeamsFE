@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-workitems',
   templateUrl: './workitems.component.html',
-  styleUrls: ['./workitems.component.less'],
+  styleUrls: ['./workitems.component.less', '../../layouts/default/default.component.less'],
   providers: [DatePipe],
   animations: [
     trigger('detailExpand', [

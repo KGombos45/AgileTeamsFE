@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-my-tickets',
   templateUrl: './my-tickets.component.html',
-  styleUrls: ['./my-tickets.component.less'],
+  styleUrls: ['./my-tickets.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class MyTicketsComponent implements OnInit {

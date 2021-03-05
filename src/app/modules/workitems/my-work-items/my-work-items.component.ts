@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-my-work-items',
   templateUrl: './my-work-items.component.html',
-  styleUrls: ['./my-work-items.component.less'],
+  styleUrls: ['./my-work-items.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe],
   animations: [
     trigger('detailExpand', [

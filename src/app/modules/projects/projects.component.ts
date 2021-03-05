@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.less'],
+  styleUrls: ['./projects.component.less', '../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class ProjectsComponent implements OnInit {

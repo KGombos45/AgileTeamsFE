@@ -8,7 +8,7 @@ import { _MAT_HINT } from '@angular/material/form-field';
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.less'],
+  styleUrls: ['./create-project.component.less', '../../../layouts/default/default.component.less'],
   providers: [DatePipe]
 })
 export class CreateProjectComponent implements OnInit {

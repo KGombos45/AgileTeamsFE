@@ -10,7 +10,7 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.less']
+  styleUrls: ['./user-profile.component.less', '../../layouts/default/default.component.less']
 })
 export class UserProfileComponent implements OnInit {
 

@@ -7,7 +7,7 @@ import { FormGroupDirective } from '@angular/forms';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['../users.component.less']
+  styleUrls: ['../users.component.less', '../../layouts/default/default.component.less']
 })
 export class RegistrationComponent implements OnInit {
 
