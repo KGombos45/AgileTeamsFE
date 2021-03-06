@@ -1,11 +1,16 @@
 .mat-toolbar.mat-primary {
-    //border-bottom: 2px solid #5ecdc7;
-    background-color: transparent !important;
-    color: white;
+    
+    background: white;
+    color: black;
 
     animation: bounceInDown; 
     animation-duration: 1.2s; 
     animation-delay: .1;
+}
+
+.logged-in-text {
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
 }
 
 ul {
@@ -18,9 +23,12 @@ ul {
 ::ng-deep .mat-button {
     border: none;
     text-transform: uppercase;
+    border-radius: 34px !important;
+    border: 2px solid #4f50ff !important;
+    color: #4f50ff;
 
     &:hover {
-        background: #57c6bd !important;
+        background: #4f50ff !important;
         color: white !important;
 
         .mat-icon {
@@ -42,7 +50,7 @@ ul {
     background: white;
 
     &:hover {
-        background: #57c6bd !important;
+        background: #4f50ff !important;
         color: white !important;
     }
 
@@ -52,7 +60,7 @@ ul {
 }
 
 ::ng-deep .mat-icon {
-    color: white;
+    color: #4f50ff ;
 }
 
 ::ng-deep .mat-menu-item .mat-icon-no-color, .mat-menu-item-submenu-trigger::after {
