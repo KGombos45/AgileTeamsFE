@@ -1,19 +1,48 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <img src="../../assets/img/bug-tracker.png" class="d-inline-block align-top navbar-logo" alt="" loading="lazy">
+        <div class="header-text">
+            <h1>BugTracker</h1>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
 <div class="main-content">
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-header card-header-danger">
-                <div class="tab-header">
-                    <h2 routerLink='/user/login' routerLinkActive='active'>Login</h2>
-                    <h2 routerLink='/user/registration' routerLinkActive='active'>Register</h2>
+
+        <div class="login-main">
+            <div class="card left">
+                <div class="card-body">
+                    <img src="../../assets/img/bug-tracker.png" class="d-inline-block align-top navbar-logo" 
+                    alt="" loading="lazy">
+
+                    <div class="welcome-text">
+                        Welcome to BugTracker
+                    </div>
+
+                    <div class="info-text">
+                        Please sign in, register an account, or click on the demo tab for demo account access to continue.
+                    </div>
+
                 </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-10 offset-md-1">
-                        <router-outlet></router-outlet>
-                     </div>
+
+            <div class="card right">
+                <div class="card-header card-header-danger">
+                    <div class="tab-header">
+                        <h2 routerLink='/user/login' routerLinkActive='active'>Login</h2>
+                        <h2 routerLink='/user/registration' routerLinkActive='active'>Register</h2>
+                        <h2 routerLink='/user/demo' routerLinkActive='active'>Demo</h2>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <router-outlet></router-outlet>
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>  

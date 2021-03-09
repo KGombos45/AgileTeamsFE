@@ -17,12 +17,18 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { LoginComponent } from './user/login/login.component';
 import { UserService } from './shared/user.service';
 
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { SharedModule } from './shared/shared.module';
+import { DemoComponent } from './user/demo/demo.component';
+
+
 
 
 
@@ -32,6 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
+    DemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
+    SharedModule,
     ToastrModule.forRoot({
       progressBar: true
     })

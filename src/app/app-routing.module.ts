@@ -22,6 +22,7 @@ import { ProjectsComponent } from './modules/projects/projects.component';
 import { ProjectViewComponent } from './modules/projects/project-view/project-view.component';
 import { MyWorkItemsComponent } from './modules/workitems/my-work-items/my-work-items.component';
 import { MyTicketsComponent } from './modules/tickets/my-tickets/my-tickets.component';
+import { DemoComponent } from './user/demo/demo.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
       { 
         path: 'login', 
         component: LoginComponent
+      },
+      {
+        path: 'demo',
+        component: DemoComponent
       }     
     ]
   },
