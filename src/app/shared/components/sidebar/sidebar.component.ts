@@ -74,8 +74,6 @@ export class SidebarComponent implements OnInit {
   }
 
   isVisibleLink(menuItem, role) {
-    debugger;
-
     if (menuItem.isAdminLink || menuItem.isProjectManagerLink) {
       if (menuItem.isAdminLink && !menuItem.isProjectManagerLink && role === "Admin")
         return true;
