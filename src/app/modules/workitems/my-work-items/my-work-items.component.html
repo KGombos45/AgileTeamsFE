@@ -1,18 +1,17 @@
 <div class="main-content" [hidden]="!dataSource">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Your Work Items</h4>
-                        <p class="card-category">Create, edit, and view your work items</p>
-                    </div>
-                    <div class="card-body">
-                        <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-workitem'">
-                            <mat-icon>add</mat-icon>
-                            Add New
-                        </button>
-                        <perfect-scrollbar class="table-responsive">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">Your Work Items</h4>
+                    <p class="card-category">Create, edit, and view your work items</p>
+                </div>
+                <div class="card-body">
+                    <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-workitem'">
+                        <mat-icon>add</mat-icon>
+                        Add New
+                    </button>
+                    <perfect-scrollbar class="table-responsive">
                         <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
 
                             <!-- Work Item Name Column -->
@@ -25,7 +24,8 @@
                                         <mat-icon *ngIf="!element.isExpanded">add</mat-icon>
                                         <mat-icon *ngIf="element.isExpanded">remove</mat-icon>
                                     </button>
-                                    <button class="btn-link" (click)="viewWorkItem(element)">{{element.workItemName}}</button>
+                                    <button class="btn-link"
+                                        (click)="viewWorkItem(element)">{{element.workItemName}}</button>
                                 </td>
                             </ng-container>
 
@@ -36,14 +36,15 @@
                                     <mat-form-field class="full-width">
                                         <mat-select [value]="element.workItemStatus" [compareWith]="compareStatuses"
                                             (selectionChange)="onStatusChange($event, element)">
-                                            <mat-option *ngFor="let workItemStatus of workItemStatuses" [value]="workItemStatus">
+                                            <mat-option *ngFor="let workItemStatus of workItemStatuses"
+                                                [value]="workItemStatus">
                                                 {{workItemStatus.statusName}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </td>
                             </ng-container>
 
-                            
+
                             <!-- Work Item Priority Column -->
                             <ng-container matColumnDef="workItemPriorityName">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
@@ -51,7 +52,8 @@
                                     <mat-form-field class="full-width">
                                         <mat-select [value]="element.workItemPriority" [compareWith]="comparePriorities"
                                             (selectionChange)="onPriorityChange($event, element)">
-                                            <mat-option *ngFor="let workItemPriority of workItemPriorities" [value]="workItemPriority">
+                                            <mat-option *ngFor="let workItemPriority of workItemPriorities"
+                                                [value]="workItemPriority">
                                                 {{workItemPriority.priorityName}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -65,7 +67,8 @@
                                     <mat-form-field class="full-width">
                                         <mat-select [value]="element.project" [compareWith]="compareProjects"
                                             (selectionChange)="onProjectChange($event, element)">
-                                            <mat-option *ngFor="let project of projects" [value]="project">{{project.projectName}}
+                                            <mat-option *ngFor="let project of projects" [value]="project">
+                                                {{project.projectName}}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -92,7 +95,7 @@
                                 <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
                             </ng-container>
 
-                            
+
                             <!-- Start Date Column -->
                             <ng-container matColumnDef="startDate">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
@@ -129,69 +132,72 @@
                                         <mat-icon>delete_outline</mat-icon>
                                     </button>
                                 </mat-cell>
-                            </ng-container>     
+                            </ng-container>
 
                             <!-- Template for details row -->
                             <ng-container matColumnDef="expandedDetail">
                                 <td mat-cell *matCellDef="let element" [attr.colspan]="8">
-                                    <div mat-subheader class="ticket-details-subheader" *ngIf="element.isExpanded">Tickets for {{element.workItemName}}</div>                                    
+                                    <div mat-subheader class="ticket-details-subheader" *ngIf="element.isExpanded">
+                                        Tickets for {{element.workItemName}}</div>
                                     <div class="row workItem-element-detail"
-                                        [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'" *ngFor="let ticket of element.tickets; let i = index">                                        
-                                        <div class="ticket-column">                                                
+                                        [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'"
+                                        *ngFor="let ticket of element.tickets; let i = index">
+                                        <div class="ticket-column">
                                             <div mat-line class="ticket-column-label" *ngIf="i < 1">Name</div>
-                                            <td mat-cell class="td-ticket-no-toggle">                                            
-                                                <button class="btn-link" (click)="viewWorkItemTicket(ticket)">{{ticket.ticketName}}</button>
-                                            </td>
-                                        </div>
-                                        <div class="ticket-column">                                               
-                                            <div mat-line class="ticket-column-label" *ngIf="i < 1">State</div>
-                                            <td mat-cell class="td-ticket-toggle">
-                                                <mat-form-field class="full-width"> 
-                                                    <mat-select [value]="ticket.ticketStatus" [compareWith]="compareTicketStatuses" (selectionChange)="onTicketStatusChange($event, ticket)">
-                                                        <mat-option *ngFor="let ticketStatus of ticketStatuses" [value]="ticketStatus">{{ticketStatus.statusName}}</mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </td>
-                                            </div>
-                                        <div class="ticket-column">                                           
-                                        <div mat-line class="ticket-column-label" *ngIf="i < 1">Owner</div>
-                                        <td mat-cell class="td-ticket-toggle">
-                                            <mat-form-field class="full-width"> 
-                                                <mat-select [value]="ticket.ticketOwner.userName" [compareWith]="compareTicketOwners" (selectionChange)="onTicketOwnerChange($event, ticket)">
-                                                    <mat-option *ngFor="let user of usersList" [value]="user">{{user.userName}}</mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </td>
-                                        </div>
-                                        <div class="ticket-column">                                               
-                                            <div mat-line class="ticket-column-label" *ngIf="i < 1">Creator</div>
-                                            <td mat-cell class="td-ticket-no-toggle">                                              
-                                                {{ticket.createdBy}}
-                                            </td>
-                                        </div>
-                                        <div class="ticket-column">                                                
-                                            <div mat-line class="ticket-column-label" *ngIf="i < 1">Created On</div>
-                                            <td mat-cell class="td-ticket-no-toggle">                                            
-                                                {{ticket.createdOn | date:'longDate'}}
-                                            </td>
-                                        </div>                                        
-                                    </div>
+                                <td mat-cell class="td-ticket-no-toggle">
+                                    <button class="btn-link"
+                                        (click)="viewWorkItemTicket(ticket)">{{ticket.ticketName}}</button>
                                 </td>
-                            </ng-container>
-
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="workItem-element-row"
-                                [class.workItem-expanded-row]="element.isExpanded"></tr>
-
-                            <!-- Extra row to show detail content column -->
-                            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="workItem-detail-row"> 
-                            </tr>
-
-                        </table>
-                    </perfect-scrollbar>
-                    </div>
+                </div>
+                <div class="ticket-column">
+                    <div mat-line class="ticket-column-label" *ngIf="i < 1">State</div>
+                    <td mat-cell class="td-ticket-toggle">
+                        <mat-form-field class="full-width">
+                            <mat-select [value]="ticket.ticketStatus" [compareWith]="compareTicketStatuses"
+                                (selectionChange)="onTicketStatusChange($event, ticket)">
+                                <mat-option *ngFor="let ticketStatus of ticketStatuses" [value]="ticketStatus">
+                                    {{ticketStatus.statusName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </div>
+                <div class="ticket-column">
+                    <div mat-line class="ticket-column-label" *ngIf="i < 1">Owner</div>
+                    <td mat-cell class="td-ticket-toggle">
+                        <mat-form-field class="full-width">
+                            <mat-select [value]="ticket.ticketOwner.userName" [compareWith]="compareTicketOwners"
+                                (selectionChange)="onTicketOwnerChange($event, ticket)">
+                                <mat-option *ngFor="let user of usersList" [value]="user">{{user.userName}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </div>
+                <div class="ticket-column">
+                    <div mat-line class="ticket-column-label" *ngIf="i < 1">Creator</div>
+                    <td mat-cell class="td-ticket-no-toggle">
+                        {{ticket.createdBy}}
+                    </td>
+                </div>
+                <div class="ticket-column">
+                    <div mat-line class="ticket-column-label" *ngIf="i < 1">Created On</div>
+                    <td mat-cell class="td-ticket-no-toggle">
+                        {{ticket.createdOn | date:'longDate'}}
+                    </td>
                 </div>
             </div>
+            </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="workItem-element-row"
+                [class.workItem-expanded-row]="element.isExpanded"></tr>
+
+            <!-- Extra row to show detail content column -->
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="workItem-detail-row">
+            </tr>
+
+            </table>
+            </perfect-scrollbar>
         </div>
     </div>
 </div>

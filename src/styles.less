@@ -1,13 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+    --primaryBlue: #4f50ff;
+    --darkBlue: #4344c7;
 
-body {
-    background-image: url('./assets/img/background-img.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-    background-size: cover;
+    --orange: #da8a27;
+    --darkOrange: #ce7b14;
+
+    --red: #c30000;
+    --darkRed: #ab0404;
+
+    --green: #3faf61;
+    --darkGreen: #3a9e58;
+
+    --offWhite: #f9f9f9c7;
+    --grayText: #8c8c8c;
+
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Raleway', sans-serif; }
+
+
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
 
 .wrapper {
 
@@ -24,16 +42,10 @@ body {
     }
   }
 
-  .navbar {
-      border-bottom: 2px solid #5ecdc7;
-      background-color: white !important;
-    
-    }
-
   
 .bugtracker-dropdown {
     background-color: white;
-    border: 2px solid #4f50ff;
+    border: 2px solid var(--primaryBlue);
     color: #05414c;
 
     &:active {
@@ -43,7 +55,7 @@ body {
 
     &:hover {
         color: white;
-        background-color: #4f50ff;
+        background-color: var(--primaryBlue);
     }
 
 }
@@ -53,5 +65,8 @@ body {
     opacity: 1;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Raleway', sans-serif; }
+.mat-divider {
+    margin: 0 20px 0 20px !important;
+}
+
+

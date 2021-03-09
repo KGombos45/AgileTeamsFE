@@ -19,8 +19,6 @@
     }
 }
 
-
-
 .card-top {
     height: auto;
     width: 100% !important;
@@ -32,12 +30,6 @@
   .card-workItems {
     height: 345px;      
     margin: 0 20px 0 20px !important;
-
-      tr {
-        &:hover {
-            background: #3baa998c;
-        }
-    }
     
     .table-responsive {
         display: block;
@@ -73,22 +65,7 @@
             vertical-align: middle;
         }
     }
-
-    ::ng-deep .mat-sort-header-arrow {
-        color: #75ff92;
-    }
-    
-    th.mat-header-cell {
-        background: #11475d;
-        color: white;
-        font-weight: bold;
-    }
-    
-    .mat-cell {
-        color: rgb(255, 255, 255, 0.87) !important;
-        border-bottom-color: rgb(94, 205, 199, 0.32) !important;
-    }
-    
+        
     .mat-form-field {
         width: 80%;
     }
@@ -114,10 +91,9 @@
 
 .user-profile-textbox-container,
 .user-profile-textbox-container-about {
-    background: #11475d;
+    background:var(--offWhite);
     height: 52px;
     border-radius: 8px;
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(70,182,168,.55);
     margin-bottom: 10px;
     padding: 5px;
 
@@ -125,20 +101,6 @@
         height: 100%;
         padding-top: 10px;
         padding-left: 10px;
-    }
-}
-
-
-mat-label {
-    color: #f1f1f1;   
-}
-
-.mat-input-element {
-    caret-color: #58c7ce;
-
-    &.readOnly {
-        cursor: not-allowed;
-        color: black;
     }
 }
 

@@ -1,11 +1,15 @@
 
+.main-content {
+    width: 100vw !important;
+}
 
 .card {
     width: 450px !important;
 }
 
   .card-body {
-      margin-top: 100px !important;
+      margin-top: 30px;
+      margin-bottom: 30px;
   }
 
 
@@ -19,14 +23,14 @@
         display:inline-block;
         padding: 30px 40px 10px 40px;
         cursor: pointer;
-        color: #d4d4d4;
+        color: black;
         border-bottom: 2px solid #adadad;
         
 
             &.active {
-                color: white;
+                color: var(--primaryBlue);
                 font-weight: 500;
-                border-bottom: 4px solid white;
+                border-bottom: 4px solid var(--primaryBlue);
             }
 
             &:focus {
@@ -39,7 +43,7 @@
 form {
     margin: 0px 16px;
     margin-top: 25px;
-    color: white;
+    color: black;
 }
 
 .btn-register {
@@ -56,25 +60,19 @@ form {
     width: 100%;
 }
 
-
-.userForm-image {
-    margin-top: 25px;
-    margin-bottom: 35px;
-}
-
 .mat-flat-button {
-    background: #3faf61;
+    background: var(--primaryBlue);
     color: white;
     margin: 0 auto;
     width: 145px;
 
     &:hover {
-        background: #3a9e58;
+        background: var(--darkBlue);
     }
 
     &.mat-button-disabled {
         color: #ffffff94;
-        background-color: #3faf61b8;
+        background-color: #4f50ff8f;
         cursor: not-allowed;
     }
 }
@@ -83,22 +81,8 @@ form {
     caret-color: #58c7ce;
 }
 
-mat-label {
-    color: #f1f1f1;   
-}
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
-    color: white !important;
-}
-
-::ng-deep .mat-input-element::placeholder{
-    color: white;
-}
-
-::ng-deep .mat-form-field-underline {
-    background-color: #38aab4 !important;
-}
 ::ng-deep .mat-form-field-ripple {
-    background-color: #58c7ce !important;
+    background-color: var(--primaryBlue) !important;
 }
 
 ::ng-deep .mat-form-field.mat-form-field-invalid mat-label {

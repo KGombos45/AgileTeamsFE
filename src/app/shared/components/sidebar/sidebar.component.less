@@ -14,15 +14,11 @@ ul {
         }
 
         a {
-            -o-transition:.15s;
-            -ms-transition:.15s;
-            -moz-transition:.15s;
-            -webkit-transition:.15s;
-            /* ...and now for the proper property */
-            transition:.15s;
             color: black;
             border-radius: 34px;
             font-family: "Raleway", sans-serif;
+            font-weight: bold;
+            transition: all .5s;
 
 
             i {
@@ -30,42 +26,24 @@ ul {
             }
 
             &:hover {
-                color: white;
-                background-color: #fdce25;
+                color: black;
+                background-color: #f7f7f7;
                 border-radius: 34px;
+                box-shadow: 0px 0px 16px -5px rgb(0 0 0 / 0.28);
+                -webkit-box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.28); 
             }
 
             &.active {
                 color: white;
-                background-color: #4f50ff;
+                background-color: var(--primaryBlue);
                 border-radius: 34px;
+                -webkit-box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.7); 
+                box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.7);
             }
         }
     }
 }
 
-.link-btn {
-    background-color: white;
-    display: block;
-    height: 55px;
-    border-radius: 34px;
-    color: #05414c;
-    font-weight: 600;
-    padding-top: 15px;
-    padding-left: 15px;
-    
-    &:hover {
-        text-decoration: none;
-        color: white;
-        background-color: #fdce25;
-    }
-
-    &:active {
-      text-decoration: none;
-      color: white;
-      background-color: #4f50ff;
-    }
-}
 
 .profile-card {
     padding: 20px;

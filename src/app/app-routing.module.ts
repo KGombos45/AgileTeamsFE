@@ -11,7 +11,6 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { UserProfileViewComponent } from './modules/user-profile/user-profile-view/user-profile-view.component';
 import { ManageRolesComponent } from './modules/manage-roles/manage-roles.component';
-import { ManageUsersComponent } from './modules/manage-users/manage-users.component';
 import { WorkItemsComponent } from './modules/workitems/workitems.component';
 import { TicketsComponent } from './modules/tickets/tickets.component';
 import { CreateWorkItemComponent } from './modules/workitems/create-workitem/create-workitem.component';
@@ -67,11 +66,6 @@ const routes: Routes = [
       {
         path: 'manage-roles',
         component: ManageRolesComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'manage-users',
-        component: ManageUsersComponent,
         canActivate: [AuthGuard]
       },
       {

@@ -16,7 +16,6 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { UserService } from './shared/user.service';
-import { ManageUsersComponent } from './modules/manage-users/manage-users.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
@@ -33,7 +32,6 @@ import { MatIconModule } from '@angular/material/icon';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    ManageUsersComponent,
   ],
   imports: [
     BrowserModule,
