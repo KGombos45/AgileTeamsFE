@@ -1,200 +1,204 @@
 <div class="main-content">
     <div class="container-fluid">
-    <div class="container left">
-        <div class="card card-workItem">
-            <div class="card-header card-header-danger">
-                <h4 class="card-title">Edit Work Item</h4>
-                <p class="card-category">Edit work item information</p>
-            </div>
-            <div class="card-body">
-                <form [formGroup]="workItemModel" (submit)="updateWorkItem()" (reset)="resetForm()">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="workItemName">
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-3">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Project</mat-label>
-                                <mat-select formControlName="workItemProjectID">
-                                    <mat-option *ngFor="let project of projects" [value]="project.projectID">
-                                        {{project.projectName}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-3">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Owner</mat-label>
-                                <mat-select formControlName="workItemOwnerID">
-                                    <mat-option *ngFor="let user of usersList" [value]="user.id">{{user.userName}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Priority</mat-label>
-                                <mat-select formControlName="workItemPriorityID">
-                                    <mat-option *ngFor="let priority of priorities" [value]="priority.priorityID">
-                                        {{priority.priorityName}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Type</mat-label>
-                                <mat-select formControlName="workItemTypeID">
-                                    <mat-option *ngFor="let type of types" [value]="type.typeID">{{type.typeName}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>State</mat-label>
-                                <mat-select formControlName="workItemStatusID">
-                                    <mat-option *ngFor="let status of statuses" [value]="status.statusID">
-                                        {{status.statusName}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <mat-form-field class="full-width user-profile-textbox-container-about">
-                                <mat-label>Description</mat-label>
-                                <textarea matInput formControlName="workItemDescription"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>Start date</mat-label>
-                                <input matInput [matDatepicker]="startPicker" formControlName="startDate">
-                                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-                                <mat-datepicker #startPicker></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width user-profile-textbox-container">
-                                <mat-label>End date</mat-label>
-                                <input matInput [matDatepicker]="endPicker" formControlName="targetEndDate">
-                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-                                <mat-datepicker #endPicker></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button mat-flat-button class="btn-submit" type="submit">Update</button>
-                            <button mat-flat-button class="btn-reset" type="button"
-                                [routerLink]="'/workitems'">Cancel</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="container right">
-        <div class="row">
-            <div class="card card-small">
+        <div class="card-wrapper">
+        <div class="container left">
+            <div class="card card-workItem">
                 <div class="card-header card-header-danger">
-                    <h4 class="card-title">Comments</h4>
-                    <p class="card-category">Work item comments</p>
+                    <h4 class="card-title">Edit Work Item</h4>
+                    <p class="card-category">Edit work item information</p>
                 </div>
                 <div class="card-body">
-                    <perfect-scrollbar class="table-responsive">
-                        <div class="container messages-container" *ngFor="let comment of workItem.comments">
-
-                            <div class="message">
-                                <div class="message-sender"
-                                [class.from-them-sender]="comment.submittedBy != userInfo.userName"
-                                [class.from-me-sender]="comment.submittedBy == userInfo.userName">
-
-                                <span *ngIf="comment.submittedBy != userInfo.userName">{{comment.submittedBy}}:
-                                    {{comment.userName }}</span>
-                                <span *ngIf="comment.submittedBy == userInfo.userName">You:</span>
-                                </div>
-                                <div class="bubble-mark" [class.from-them]="comment.submittedBy != userInfo.userName"
-                                    [class.from-me]="comment.submittedBy == userInfo.userName"> {{comment.comment}}
-                                </div>
-                                <div class="message-time"
-                                    [class.from-them-time]="comment.submittedBy != userInfo.userName"
-                                    [class.from-me-time]="comment.submittedBy == userInfo.userName">{{comment.submittedOn
-                                    | date:'short'}}
-                                </div>
-                            </div>
-                        </div>
-
-                    </perfect-scrollbar>
-                    <form [formGroup]="workItemComment" (submit)="createWorkItemComment()">
+                    <form [formGroup]="workItemModel" (submit)="updateWorkItem()" (reset)="resetForm()">
                         <div class="row">
-                            <div class="col-md-9">
-                                <mat-form-field class="full-width">
-                                    <mat-label>Type a comment...</mat-label>
-                                    <input matInput formControlName="comment">
+                            <div class="col-md-6">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput formControlName="workItemName">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-3">
-                                <button mat-flat-button class="btn-submit" type="submit">Add Comment</button>
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Project</mat-label>
+                                    <mat-select formControlName="workItemProjectID">
+                                        <mat-option *ngFor="let project of projects" [value]="project.projectID">
+                                            {{project.projectName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Owner</mat-label>
+                                    <mat-select formControlName="workItemOwnerID">
+                                        <mat-option *ngFor="let user of usersList" [value]="user.id">{{user.userName}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Priority</mat-label>
+                                    <mat-select formControlName="workItemPriorityID">
+                                        <mat-option *ngFor="let priority of priorities" [value]="priority.priorityID">
+                                            {{priority.priorityName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Type</mat-label>
+                                    <mat-select formControlName="workItemTypeID">
+                                        <mat-option *ngFor="let type of types" [value]="type.typeID">{{type.typeName}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>State</mat-label>
+                                    <mat-select formControlName="workItemStatusID">
+                                        <mat-option *ngFor="let status of statuses" [value]="status.statusID">
+                                            {{status.statusName}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field class="full-width user-profile-textbox-container-about">
+                                    <mat-label>Description</mat-label>
+                                    <textarea matInput formControlName="workItemDescription"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>Start date</mat-label>
+                                    <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #startPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="full-width user-profile-textbox-container">
+                                    <mat-label>End date</mat-label>
+                                    <input matInput [matDatepicker]="endPicker" formControlName="targetEndDate">
+                                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #endPicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button mat-flat-button class="btn-submit" type="submit">Update</button>
+                                <button mat-flat-button class="btn-reset" type="button"
+                                    [routerLink]="'/workitems'">Cancel</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="card card-small">
-                <div class="card-header card-header-danger">
-                    <h4 class="card-title">Users</h4>
-                    <p class="card-category">Work item users</p>
+        <div class="container right">
+            <div class="row">
+                <div class="card card-small">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Comments</h4>
+                        <p class="card-category">Work item comments</p>
+                    </div>
+                    <div class="card-body">
+                        <perfect-scrollbar class="table-responsive">
+                            <div class="container messages-container" *ngFor="let comment of workItem.comments">
+
+                                <div class="message">
+                                    <div class="message-sender"
+                                        [class.from-them-sender]="comment.submittedBy != userInfo.userName"
+                                        [class.from-me-sender]="comment.submittedBy == userInfo.userName">
+
+                                        <span *ngIf="comment.submittedBy != userInfo.userName">{{comment.submittedBy}}:
+                                            {{comment.userName }}</span>
+                                        <span *ngIf="comment.submittedBy == userInfo.userName">You:</span>
+                                    </div>
+                                    <div class="bubble-mark"
+                                        [class.from-them]="comment.submittedBy != userInfo.userName"
+                                        [class.from-me]="comment.submittedBy == userInfo.userName"> {{comment.comment}}
+                                    </div>
+                                    <div class="message-time"
+                                        [class.from-them-time]="comment.submittedBy != userInfo.userName"
+                                        [class.from-me-time]="comment.submittedBy == userInfo.userName">
+                                        {{comment.submittedOn
+                                        | date:'short'}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </perfect-scrollbar>
+                        <form [formGroup]="workItemComment" (submit)="createWorkItemComment()">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Type a comment...</mat-label>
+                                        <input matInput formControlName="comment">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <button mat-flat-button class="btn-submit" type="submit">Add Comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <perfect-scrollbar class="table-responsive">
-                        <table mat-table [dataSource]="dataSource" matSort>
+            </div>
+            <div class="row">
+                <div class="card card-small">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Users</h4>
+                        <p class="card-category">Work item users</p>
+                    </div>
+                    <div class="card-body">
+                        <perfect-scrollbar class="table-responsive">
+                            <table mat-table [dataSource]="dataSource" matSort>
 
-                            <!-- Work Item Name Column -->
-                            <ng-container matColumnDef="userName">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <button class="btn-link" *ngIf="element.workItemOwner"
-                                        (click)="viewUserProfile(element.workItemOwner.id)">
-                                        {{element.workItemOwner.userName }}
-                                    </button>
-                                    <button class="btn-link" *ngIf="element.ticketOwner"
-                                        (click)="viewUserProfile(element.ticketOwner.id)">
-                                        {{element.ticketOwner.userName }}
-                                    </button>
-                                </td>
-                            </ng-container>
+                                <!-- Work Item Name Column -->
+                                <ng-container matColumnDef="userName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <button class="btn-link" *ngIf="element.workItemOwner"
+                                            (click)="viewUserProfile(element.workItemOwner.id)">
+                                            {{element.workItemOwner.userName }}
+                                        </button>
+                                        <button class="btn-link" *ngIf="element.ticketOwner"
+                                            (click)="viewUserProfile(element.ticketOwner.id)">
+                                            {{element.ticketOwner.userName }}
+                                        </button>
+                                    </td>
+                                </ng-container>
 
-                            <!-- Work Item Status Column -->
-                            <ng-container matColumnDef="workItem">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned Work </th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{element.workItemName || element.ticketName}}
-                                </td>
-                            </ng-container>
+                                <!-- Work Item Status Column -->
+                                <ng-container matColumnDef="workItem">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned Work </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.workItemName || element.ticketName}}
+                                    </td>
+                                </ng-container>
 
-                            <!-- Work Item Status Column -->
-                            <ng-container matColumnDef="role">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <span *ngIf="element.workItemOwner">{{element.workItemOwner.role }}</span>
-                                    <span *ngIf="element.ticketOwner">{{element.ticketOwner.role }}</span>
-                                </td>
-                            </ng-container>
+                                <!-- Work Item Status Column -->
+                                <ng-container matColumnDef="role">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span *ngIf="element.workItemOwner">{{element.workItemOwner.role }}</span>
+                                        <span *ngIf="element.ticketOwner">{{element.ticketOwner.role }}</span>
+                                    </td>
+                                </ng-container>
 
-                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                            <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
 
-                        </table>
-                    </perfect-scrollbar>
+                            </table>
+                        </perfect-scrollbar>
+                    </div>
                 </div>
             </div>
         </div>

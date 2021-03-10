@@ -1,33 +1,11 @@
+.container-fluid, .card-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-  .card-body {
-      margin-top: 60px;
+  .row {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
   }
-
-  .table {
-      color: white;
-      text-transform: uppercase;
-
-      td {
-          border-color: #58c7ce;
-
-          &:first-child {
-              border-bottom-left-radius: 8px;
-              border-top-left-radius: 8px;
-          }
-
-          &:last-child {
-            border-bottom-right-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-      }
-  }
-
-tr {
-    &:hover {
-        background: #3baa998c;
-    }
 }
-
-  .text-primary {
-    color: #cab568 !important
-  }

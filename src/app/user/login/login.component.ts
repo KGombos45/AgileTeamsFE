@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
+    debugger;
     this.service.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);

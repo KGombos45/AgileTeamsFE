@@ -58,10 +58,8 @@ export class UserProfileViewComponent implements OnInit {
 
 
     getUserWorkItems() {
-      debugger;
       this.service.getUserWorkItems(this.userID).subscribe(
         (res: any) => {
-          debugger;
           this.dataSource.data = res;
           this.dataSource.sort = this.sort;
         },
@@ -85,8 +83,6 @@ export class UserProfileViewComponent implements OnInit {
 
 
     viewWorkItem(element) {
-
-      debugger;
       this.service.setWorkItem(element);
   
       this.router.navigate(['/workitem-view']);

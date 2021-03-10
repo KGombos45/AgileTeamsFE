@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-default',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
-  constructor() { }
+  @Output() toggleNavBody: EventEmitter<boolean> = new EventEmitter();
+
+  isOpen = true;
+  constructor(public media: MediaObserver) { }
 
   ngOnInit(): void {
+    if(this.media.isActive('xs')) {
+      this.isOpen = false;
+    }
+  }
+
+  toggleSideNav() {
+    this.isOpen = !this.isOpen;
+  }
+
+  navToggle($event): void {
+    this.isOpen = !this.isOpen;
   }
 
 }

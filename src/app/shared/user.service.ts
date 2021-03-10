@@ -78,19 +78,19 @@ export class UserService {
   }
 
   setProject(data) {
-    this.project = data;
+    localStorage.setItem('Project', JSON.stringify(data));
   }
 
   getProject() {
-    return this.project;
+    return JSON.parse(localStorage.getItem('Project'));
   }
 
   setTicket(data) {
-    this.ticket = data;
+    localStorage.setItem('Ticket', JSON.stringify(data));
   }
 
   getTicket() {
-    return this.ticket;
+    return JSON.parse(localStorage.getItem('Ticket'));
   }
 
   setProfileUserID(data) {

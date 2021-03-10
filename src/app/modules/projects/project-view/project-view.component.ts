@@ -50,7 +50,6 @@ export class ProjectViewComponent implements OnInit {
       });
       
     });
-    debugger;
 
     this.dataSource2.data = list;
     this.dataSource2.sort;
@@ -82,7 +81,6 @@ export class ProjectViewComponent implements OnInit {
 
   resetForm() {
     setTimeout(() => this.setProjectValues(),800); 
-
   }
 
   viewWorkItem(element) {

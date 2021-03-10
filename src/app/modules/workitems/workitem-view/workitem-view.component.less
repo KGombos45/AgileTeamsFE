@@ -6,6 +6,11 @@
     width: auto;
     display: flex;
 
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;    
+        width: 100%;        
+    }
+
     &.left {
         flex-direction: row;
     }
@@ -13,32 +18,33 @@
     &.right {
         flex-direction: column;
     }
-
-    &.messages-container {
-        width: 100%;
-        display: block !important;
-    }
 }
 
 .card-workItem {
-    width: 100% !important;
-    min-width: 850px !important;
     height: 605px;
-    margin-left: 40px;
-    margin-top: 65px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        margin: 0 0 30px 0;
+        height: auto;
+    }
 }
 
 .card-small:first-child {
     margin-bottom: 20px;
     height: 365px;
-
 }
 
   .card-small {
     margin-left: 30px;
     height: 345px;
-    width: 100% !important;
-    min-width: 505px !important;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        margin: 0 0 30px 0;
+    }
     
     .table-responsive {
         display: block;
@@ -181,7 +187,14 @@
     }
         
     .mat-form-field {
-        width: 80%;
+        width: auto;
+    }
+
+    .btn-submit {
+        @media screen and (max-width: 600px) {
+            top: -52px;
+            position: relative;
+        }
     }
     
     th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
@@ -221,4 +234,6 @@
 textarea.mat-input-element {
     height: 185px;
     max-height: 195px !important;
+
+
 }

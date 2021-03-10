@@ -1,346 +1,3 @@
-
-// :host {
-//     display: flex;
-//     flex-direction: column;
-// }
-
-// mat-drawer {
-//     width: 325px;
-//     background: #1905235c;
-//     color: white;
-
-//     animation: bounceInLeft; 
-//     animation-duration: 1.2s; 
-//     animation-delay: .1;
-// }
-
-// mat-drawer-container {
-//     height: 100%;
-//     background: transparent;
-// }
-
-// app-footer {
-//     position: relative;
-//     bottom: 0;
-//     width: 100%;
-//     height: 20px;
-
-    
-//     animation: bounceInUp; 
-//     animation-duration: 1.2s; 
-//     animation-delay: .1;
-// }
-
-
-// .main-content{
-//     height: auto;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 40px;
-//     min-height: calc(100vh - 125px);
-//   }
-
-//   .card {
-//     width: auto;
-//     margin: 0 auto;
-//     background: #1905235c;
-//     color: white; 
-//     border-radius: 8px;   
-//     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-//     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-//     min-width: 550px;
-// }
-
-// .card-header {
-//     width: 98%;
-//     background: linear-gradient(60deg, #0f4157, #134d63);
-//     position: absolute;
-//     top: -12px;
-//     left: 8px;
-//     border-radius: 8px;   
-//     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(70,182,168,.55);
-
-//     h4, p {
-//         margin-bottom: 4px;
-//     }
-
-//     p {
-//         color: #e2e2e2;
-//     }
-//   }
-
-//   .card-body {
-//     margin-top: 60px;
-// }
-
-// .full-width {
-//     width: 100%;
-// }
-
-// .mat-flat-button.mat-button-disabled {
-//     &.btn-submit {        
-//         color: #ffffff94;
-//         background-color: var(--green)85;
-//         cursor: not-allowed;
-//     }
-
-//     &.btn-reset {
-//         background-color: #58c7be80;
-//         color: #ffffff94;
-//         cursor: not-allowed;
-//     }
-// }
-
-// .mat-flat-button {
-
-//     min-width: auto;
-
-//     &.btn-create {
-//         background: var(--green);
-//         color: white;
-//         float: left;
-//         margin-bottom: 15px;
-    
-//         &:hover {
-//             background: var(--darkGreen);
-//         }
-//     }
-
-//     &.btn-submit {
-//         background: var(--green);
-//         color: white;
-//         float: right;
-    
-//         &:hover {
-//             background: var(--darkGreen);
-//         }
-//     }
-
-//     &.btn-delete {
-//         background: var(--red);
-//         color: white;
-//         float: right;
-//         margin-left: 10px;
-    
-//         &:hover {
-//             background: var(--darkRed);
-//         }
-//     }
-
-//     &.btn-expand {
-//         width: 20px;
-//         background: transparent;
-//         margin-left: -30px;
-//         margin-right: 10px;
-//     }
-
-//     &.btn-open {
-//         background: #3faf9f;
-//         color: white;
-//         margin-left: 10px;
-
-//         &:hover {
-//             background: #308478;
-//         }
-//     } 
-
-//     &.btn-reset {
-//         background: #58c7be;
-//         color: white;
-//         float: right;
-//         margin-right: 10px;
-    
-//         &:hover {
-//             background: #4fb3ab;
-//         }
-//     }
-// }
-
-
-
-// th.mat-header-cell {
-//     background:var(--offWhite);
-//     color: white;
-//     font-weight: bold;
-// }
-
-// tr {
-//     &:hover {
-//         background: #3baa998c;
-//     }
-// }
-
-// .table-responsive {
-//     display: block;
-//     width: 100%;
-//     height: 485px;
-//     position: relative;
-//     margin: 0px auto;
-//     padding: 0px;
-
-//     table {
-//         width: 100%;
-//         max-width: 100%;
-//         background: transparent;
-//         margin-bottom: 1rem;
-//         display: table;
-//         border-collapse: collapse;
-//         margin: 0px;
-//     }
-//     .mat-row,
-//     .mat-header-row {
-//         display: table-row;
-//     }
-//     .mat-cell,
-//     .mat-header-cell {
-//         word-wrap: initial;
-//         //display: table-cell;
-//         //padding: 0px 5px;
-//         line-break: unset;
-//         width: auto;
-//         white-space: nowrap;
-//         overflow: hidden;
-//         vertical-align: middle;
-//     }
-// }
-
-
-
-// .mat-cell {
-//     color: rgb(255, 255, 255, 0.87) !important;
-//     border-bottom-color: rgb(94, 205, 199, 0.32) !important;
-// }
-
-
-// th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
-//     padding-right: 0;
-// }
-
-// .mat-input-element {
-//     caret-color: #58c7ce;
-
-//     &.readOnly {
-//         cursor: not-allowed;
-//         color: black;
-//     }
-// }
-
-// textarea.mat-input-element {
-//     height: 325px;
-//     max-height: 400px;
-// }
-
-
-
-
-
-
-
-// mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
-//     padding-top: 10px;
-// }
-
-
-// ::ng-deep .mat-paginator-container {
-//     background: #0f3f52;
-//     color: white;
-// }
-
-// ::ng-deep .mat-sort-header-arrow {
-//     color: #75ff92;
-// }
-
-// ::ng-deep .mat-form-field-underline {
-//     background-color: #38aab4 !important;;
-// }
-
-// ::ng-deep .mat-select-value {
-//     color: white;
-// }
-
-// ::ng-deep .mat-select-panel {
-//     background: #1f5d5f;
-// }
-
-// ::ng-deep .mat-select-arrow {
-//     color: white;
-// }
-
-// ::ng-deep .mat-option-text {
-//     color: white;
-// }
-
-// ::ng-deep .mat-datepicker-toggle {
-//     color: rgb(255,255,255, .68);
-// }
-
-// ::ng-deep .mat-datepicker-content {
-
-//     background-color: #1f5d5f;
-
-//     .mat-button {
-//         color: white;
-
-//         .mat-calendar-arrow {
-//             border-top-color: white;
-//         }
-//     }
-
-//     .mat-calendar-previous-button, .mat-calendar-next-button {
-//         color: #3faf8b
-//     }
-
-//     .mat-calendar-table-header {
-//         color: #79e6c8;
-//     }
-
-//     .mat-calendar-body-label {
-//         color: white;
-//     }
-
-//     .mat-calendar-body-cell-content {
-//         color: white;
-//     }
-    
-// }
-
-
-// // mat-label error style
-// ::ng-deep .mat-form-field.mat-form-field-invalid .mat-input-element {
-//     caret-color: red !important;
-// }
-
-// ::ng-deep.mat-form-field-disabled {
-//     .mat-input-element {
-//         color: #d6d6d6 !important;
-//     }    
-// }
-
-// ::ng-deep .mat-form-field-underline {
-//     background-color: #38aab4 !important;;
-// }
-// ::ng-deep .mat-form-field-ripple {
-//     background-color: #58c7ce !important;
-// }
-
-// /* Placeholder overrides */
-// :host ::ng-deep input::-webkit-input-placeholder {
-//     color: rgba(255,255,255, 0.7) !important;
-// }
-
-// :host ::ng-deep input:-moz-placeholder { /* Firefox 18- */
-//     color: rgba(255,255,255, 0.7) !important;
-// }
-
-// :host ::ng-deep input::-moz-placeholder {  /* Firefox 19+ */
-//     color: rgba(255,255,255, 0.7) !important;
-// }
-
-// :host ::ng-deep input:-ms-input-placeholder {
-//     color: rgba(255,255,255, 0.7) !important;
-// }
-
 * {
     font-family: "Raleway", sans-serif;
 }
@@ -351,27 +8,73 @@
 
 .main-content {
     min-height: 100vh;
-    width: calc(100vw - 300px);
+    width: 100%;
     padding: 40px;
-    background-image: url('../../../assets/img/wave.svg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-    background-size: cover;
+
+    @media screen and (max-width: 600px) {
+        padding: 0px;
+        margin-top: 40px;
+    }
 }
 
 .container-fluid {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 600px) {
+        padding: 0px;
+    }
 }
+
+.card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    min-width: 200px;
+    padding: 40px;
+    -webkit-box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15); 
+    box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15);
+
+    background: #ffffffe8;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+
+    animation: slideInRight;
+    animation-duration: .8s;
+
+    @media screen and (max-width: 600px) {
+        padding: 10px;
+    }
+}
+
 
 .card {
     -webkit-box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15); 
     box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15);
+    border: none;
 
-    animation: fadeIn;
-    animation-duration: 1.2s;
+    .card-header {
+        background: var(--offWhite);
+        font-family: "Raleway", sans-serif !important;
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        border-bottom: 1px #f1f1f1 solid;
+        padding: 1.25rem 1.25rem;
+        
+        .card-title {
+            font-family: "Raleway", sans-serif !important;  
+            font-size: 18px;
+            font-weight: bold; 
+            margin: 0;
+        }
+
+        .card-category {
+            margin: 0;
+        }
+    }
 }
 
 .full-width {
@@ -408,7 +111,9 @@ tr {
 
 //Angular Material Overrides
 
-
+mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-type {
+    padding-right: 0;
+}
 
 mat-label {
     color: var(--grayText);   
@@ -432,11 +137,17 @@ mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-
     margin-top: 10px;
 }
 
-mat-drawer {
-    background: white;
+mat-sidenav {
+    background: #ffffffe8;
+    backdrop-filter: blur(4px);
 
     animation: bounceInLeft;
     animation-duration: 1s;
+    width: 285px;
+}
+
+mat-sidenav-container {
+    background: transparent;
 }
 
 
@@ -459,6 +170,16 @@ mat-drawer {
         color: white;
         float: left;
         margin-bottom: 15px;
+    
+        &:hover {
+            background: var(--darkBlue);
+        }
+    }
+
+    &.btn-demo {
+        background: var(--primaryBlue);
+        color: white;
+        margin: 15px;
     
         &:hover {
             background: var(--darkBlue);
@@ -537,3 +258,5 @@ mat-drawer {
         color: var(--darkBlue);
     }
 }
+
+

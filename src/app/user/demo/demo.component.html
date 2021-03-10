@@ -1,1 +1,17 @@
 <img src="../../../assets/img/demo.png" alt="Demo" class="mx-auto d-block userForm-image">
+
+<div class="demo-text">
+    Choose the role you would like to login in as.
+</div>
+
+<div class="container">
+
+        <button mat-flat-button class="btn-demo" type="primary" value="Admin" (click)="login({UserName: 'demoAdmin', Password: 'demoadmin'})">Admin</button>
+
+        <button mat-flat-button class="btn-demo" type="primary" (click)="login({UserName: 'demoProjectManager', Password: 'demopm'})">Project Manager</button>
+
+        <button mat-flat-button class="btn-demo" type="primary" (click)="login({UserName: 'demoDeveloper', Password: 'demodev'})">Developer</button>
+
+        <button mat-flat-button class="btn-demo" type="primary" (click)="login({UserName: 'demoSubmitter', Password: 'demosubmitter'})">Submitter</button>
+
+</div>

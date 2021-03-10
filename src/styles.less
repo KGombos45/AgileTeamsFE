@@ -21,47 +21,18 @@
 html, body { height: 100%; }
 body { 
     margin: 0; 
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif !important;
+
+    background-image: url('./assets/img/wave.svg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: cover;
 }
 
 .material-icons {
     font-family: 'Material Icons' !important;
-}
-
-
-.wrapper {
-
-    &.sidebar-wrapper {
-        display: flex;
-        align-items: stretch;
-        .sidebar {
-            min-width: 315px;
-            max-width: 315px;
-            min-height: 100vh;
-            background: white;
-            font-family: 'Raleway', sans-serif;
-        }
-    }
-  }
-
-  
-.bugtracker-dropdown {
-    background-color: white;
-    border: 2px solid var(--primaryBlue);
-    color: #05414c;
-
-    &:active {
-        background-color: #05414c;
-        color: white;
-    }
-
-    &:hover {
-        color: white;
-        background-color: var(--primaryBlue);
-    }
-
-}
-
+}  
 
 #toast-container > div {
     opacity: 1;
@@ -71,4 +42,7 @@ body {
     margin: 0 20px 0 20px !important;
 }
 
-
+.ps {
+    max-height: 620px !important;
+    width: inherit !important;
+}

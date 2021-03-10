@@ -1,230 +1,232 @@
 <div class="main-content">
     <div class="container-fluid">
-    <div class="container left">
-        <div class="card card-workItem">
-            <div class="card-header card-header-danger">
-                <h4 class="card-title">User Profile</h4>
-                <p class="card-category">User profile information</p>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">Username</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.userName}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">Email</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.email}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">First Name</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.firstName}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">Last Name</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.lastName}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">Address</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.address}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">City</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.city}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">State</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.state}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">Postal Code</mat-label>
-                            <div class="user-profile-textbox-container">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.zip}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="full-width">
-                            <mat-label class="user-profile-textbox-label">About</mat-label>
-                            <div class="user-profile-textbox-container-about">
-                                <div class="user-profile-textbox">
-                                    {{userInfo.about}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="container right">
-            <div class="row">
-                <div class="card card-small">
+        <div class="card-wrapper">
+            <div class="container left">
+                <div class="card card-workItem">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">User Work Items</h4>
-                        <p class="card-category">Work items assigned to this user</p>
+                        <h4 class="card-title">User Profile</h4>
+                        <p class="card-category">User profile information</p>
                     </div>
                     <div class="card-body">
-                        <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-workitem'">
-                            <mat-icon>add</mat-icon>
-                            Add New
-                        </button>
-                        <perfect-scrollbar class="table-responsive">
-                            <table mat-table [dataSource]="dataSource" matSort>
-
-                                <!-- Work Item Name Column -->
-                                <ng-container matColumnDef="workItemName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        <button class="btn-link"
-                                            (click)="viewWorkItem(element)">{{element.workItemName}}</button>
-                                    </td>
-                                </ng-container>
-
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="workItemStatusName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.workItemStatus.statusName}}
-                                    </td>
-                                </ng-container>
-
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="workItemPriorityName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.workItemPriority.priorityName}}
-                                    </td>
-                                </ng-container>
-
-
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="workItemProject">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Project </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.project.projectName}}
-                                    </td>
-                                </ng-container>
-
-                                <!-- Created By Column -->
-                                <ng-container matColumnDef="createdBy">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
-                                </ng-container>
-
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                                <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
-
-                            </table>
-                        </perfect-scrollbar>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">Username</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.userName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">Email</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.email}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">First Name</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.firstName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">Last Name</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.lastName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">Address</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.address}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">City</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.city}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">State</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.state}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">Postal Code</mat-label>
+                                    <div class="user-profile-textbox-container">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.zip}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="full-width">
+                                    <mat-label class="user-profile-textbox-label">About</mat-label>
+                                    <div class="user-profile-textbox-container-about">
+                                        <div class="user-profile-textbox">
+                                            {{userInfo.about}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="card card-small">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">User Tickets</h4>
-                        <p class="card-category">Tickets assigned to this user</p>
+            <div class="container right">
+                <div class="row">
+                    <div class="card card-small">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">User Work Items</h4>
+                            <p class="card-category">Work items assigned to this user</p>
+                        </div>
+                        <div class="card-body">
+                            <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-workitem'">
+                                <mat-icon>add</mat-icon>
+                                Add New
+                            </button>
+                            <perfect-scrollbar class="table-responsive">
+                                <table mat-table [dataSource]="dataSource" matSort>
+
+                                    <!-- Work Item Name Column -->
+                                    <ng-container matColumnDef="workItemName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <button class="btn-link"
+                                                (click)="viewWorkItem(element)">{{element.workItemName}}</button>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="workItemStatusName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.workItemStatus.statusName}}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="workItemPriorityName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Priority </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.workItemPriority.priorityName}}
+                                        </td>
+                                    </ng-container>
+
+
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="workItemProject">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Project </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.project.projectName}}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Created By Column -->
+                                    <ng-container matColumnDef="createdBy">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.createdBy}} </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                    <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+
+                                </table>
+                            </perfect-scrollbar>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-ticket'">
-                            <mat-icon>add</mat-icon>
-                            Add New
-                        </button>
-                        <perfect-scrollbar class="table-responsive">
-                            <table mat-table [dataSource]="dataSource2" matSort>
+                </div>
+                <div class="row">
+                    <div class="card card-small">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">User Tickets</h4>
+                            <p class="card-category">Tickets assigned to this user</p>
+                        </div>
+                        <div class="card-body">
+                            <button mat-flat-button class="btn-create" type="button" [routerLink]="'/create-ticket'">
+                                <mat-icon>add</mat-icon>
+                                Add New
+                            </button>
+                            <perfect-scrollbar class="table-responsive">
+                                <table mat-table [dataSource]="dataSource2" matSort>
 
-                                <!-- Work Item Name Column -->
-                                <ng-container matColumnDef="ticketName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        <button class="btn-link"
-                                            (click)="viewWorkItemTicket(element)">{{element.ticketName}}</button>
-                                    </td>
-                                </ng-container>
+                                    <!-- Work Item Name Column -->
+                                    <ng-container matColumnDef="ticketName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <button class="btn-link"
+                                                (click)="viewWorkItemTicket(element)">{{element.ticketName}}</button>
+                                        </td>
+                                    </ng-container>
 
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="ticketStatusName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.ticketStatus.statusName}}
-                                    </td>
-                                </ng-container>
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="ticketStatusName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.ticketStatus.statusName}}
+                                        </td>
+                                    </ng-container>
 
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="ticketTypeName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.ticketType.typeName}}
-                                    </td>
-                                </ng-container>
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="ticketTypeName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.ticketType.typeName}}
+                                        </td>
+                                    </ng-container>
 
-                                <!-- Work Item Status Column -->
-                                <ng-container matColumnDef="ticketWorkItemName">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Work Item </th>
-                                    <td mat-cell *matCellDef="let element">
-                                        {{element.ticketWorkItem.workItemName}}
-                                    </td>
-                                </ng-container>
+                                    <!-- Work Item Status Column -->
+                                    <ng-container matColumnDef="ticketWorkItemName">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Work Item </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            {{element.ticketWorkItem.workItemName}}
+                                        </td>
+                                    </ng-container>
 
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
-                                <tr mat-row *matRowDef="let element; columns: displayedColumns2;"></tr>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky: true"></tr>
+                                    <tr mat-row *matRowDef="let element; columns: displayedColumns2;"></tr>
 
-                            </table>
-                        </perfect-scrollbar>
+                                </table>
+                            </perfect-scrollbar>
+                        </div>
                     </div>
                 </div>
             </div>

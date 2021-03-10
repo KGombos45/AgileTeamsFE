@@ -3,13 +3,18 @@
 }
 
 .mat-toolbar {
-    background: var(--offWhite);
+    background: var(--darkBlue);
     border-bottom: 1px var(--grayText) solid;
-    color: black;
+    padding: 5px;
+    color: white;
 
     img {
         height: 45px;
+        position: relative;
         width: 45px;
+        top: -9px;
+        z-index: 500;
+        left: 5px;
     }
 
     .header-text {
@@ -21,8 +26,9 @@
     }
 }
 
+
 .login-main {
-    width: calc(100vw - 850px);
+    width: auto;
     min-height: calc(100vh - 250px);
     background: #ffffffe8;
     border-radius: 8px;
@@ -32,18 +38,52 @@
     padding: 40px;
     -webkit-box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15); 
     box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
 
     animation: slideInRight;
     animation-duration: .8s;
 
-    @media screen and (max-width: 950px) {
+
+    @media screen and (max-width: 1024px) {
         flex-direction: column;
-        width: 100%;
     }
 
 }
 
+.hexagon {
+    position: relative;
+    width: 55px; 
+    height: 26.75px;
+    background-color: #ffffff;
+    margin: 15.88px 0;
+  }
+  
+  .hexagon:before,
+  .hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 27.5px solid transparent;
+    border-right: 27.5px solid transparent;
+  }
+  
+  .hexagon:before {
+    bottom: 100%;
+    border-bottom: 15.88px solid #ffffff;
+  }
+  
+  .hexagon:after {
+    top: 100%;
+    left: 0;
+    width: 0;
+    border-top: 15.88px solid #ffffff;
+  }
+
 .card {
+
+    .card-header {
+        background: var(--offWhite);
+    }
 
     &.right {
         width: 450px !important;
@@ -51,14 +91,25 @@
 
     &.left {
         width: 450px;
-        height: 450px;
+        height: auto;
+        padding: 20px;
         border: none;
         box-shadow: none;
+        background: transparent;
+        margin-right: 40px;
+
+        @media screen and (max-width: 1024px) {
+            margin-bottom: 30px;
+            margin-right: 0;
+        }
 
         img {
             margin: 0 auto;
-            height: 150px;
+            height: 165px;
             width: 150px;
+
+            //animation: rotation 20s infinite linear;
+
         }
 
     }
@@ -68,16 +119,39 @@
   .card-body {
 
       display: flex;
-        justify-content: center;
+    justify-content: center;
     text-align: center;
     flex-direction: column;
 
       .welcome-text {
           height: 60px;
           margin-top: 25px;
-          font-size: 34px;
+          font-size: 32px;
           font-weight: bold;
+
+          span {
+              color: var(--primaryBlue);
+          }
       }
+
+      .info-text {
+
+        p {
+            span {
+                font-weight: bold;
+
+                span {
+                    color: var(--primaryBlue);
+                }
+            }
+        }
+
+         p:nth-child(2) {
+             margin-top: 20px;
+             font-size: 12px;
+         }
+      }
+
   }
 
 
@@ -124,8 +198,9 @@ form {
     margin-bottom: -20px !important;
 }
 
-.full-width {
-    width: 100%;
+.demo-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .mat-flat-button {
@@ -143,11 +218,9 @@ form {
         background-color: #4f50ff8f;
         cursor: not-allowed;
     }
+
 }
 
-.mat-input-element {
-    caret-color: #58c7ce;
-}
 
 ::ng-deep .mat-form-field-ripple {
     background-color: var(--primaryBlue) !important;
@@ -169,4 +242,14 @@ form {
 
 ::ng-deep .mat-icon {
     font-family: 'Material Icons' !important;
+    color: black;
 }
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

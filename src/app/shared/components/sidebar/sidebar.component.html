@@ -1,29 +1,31 @@
-<mat-nav-list>
-    <div class="profile-card d-block">
-        <div class="headerLogo d-inline-block align-middle">
-            <img src="../../assets/img/bug-tracker.png" class="d-inline-block align-top navbar-logo" width="100"
-                height="100" alt="" loading="lazy">
-        </div>
-        <div class="headerText d-inline-block align-middle">
-            <h2>Bug Tracker</h2>
-            <h3>Welcome,</h3>
-            <h4 *ngIf="userInfo">{{userInfo.firstName}} {{userInfo.lastName}}</h4>
-        </div>
-    </div>
 
-    <mat-divider></mat-divider>
-    <ul *ngIf="userInfo">
-        <li *ngFor="let menuItem of menuItems">
-            <a mat-list-item [routerLink]="[menuItem.path]" routerLinkActive="active" *ngIf="isVisibleLink(menuItem, userInfo.role)">
-                <i class="material-icons">{{menuItem.icon}}</i>{{menuItem.title}}
-            </a>
-                <ul *ngIf="menuItem.subMenu">
-                    <li>
-                        <a mat-list-item [routerLink]="[menuItem.subLink.path]" routerLinkActive="active">
-                            <i class="material-icons">{{menuItem.subLink.icon}}</i>{{menuItem.subLink.title}}
-                        </a>
-                    </li>
-                </ul>
-        </li>
-    </ul>
-</mat-nav-list>
+   <mat-nav-list>
+        <div class="profile-card d-block">
+            <div class="headerLogo d-inline-block align-middle">
+                <img src="../../assets/img/logo.svg" class="d-inline-block align-top navbar-logo" width="100"
+                    height="100" alt="" loading="lazy">
+            </div>
+            <div class="headerText d-inline-block align-middle">
+                <h2>Agile<span>Teams</span></h2>
+                <h3>Welcome,</h3>
+                <h4 *ngIf="userInfo">{{userInfo.firstName}} {{userInfo.lastName}}</h4>
+            </div>
+        </div>
+    
+        <mat-divider></mat-divider>
+        <ul *ngIf="userInfo">
+            <li *ngFor="let menuItem of menuItems">
+                <a mat-list-item [routerLink]="[menuItem.path]" routerLinkActive="active" *ngIf="isVisibleLink(menuItem, userInfo.role)">
+                    <i class="material-icons">{{menuItem.icon}}</i>{{menuItem.title}}
+                </a>
+                    <ul *ngIf="menuItem.subMenu">
+                        <li>
+                            <a mat-list-item [routerLink]="[menuItem.subLink.path]" routerLinkActive="active">
+                                <i class="material-icons">{{menuItem.subLink.icon}}</i>{{menuItem.subLink.title}}
+                            </a>
+                        </li>
+                    </ul>
+            </li>
+        </ul>
+    </mat-nav-list>
+

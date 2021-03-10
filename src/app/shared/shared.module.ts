@@ -12,8 +12,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatListModule } from '@angular/material/list'
-import { MatBadgeModule } from '@angular/material/badge'
+import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -33,7 +34,8 @@ import { MatBadgeModule } from '@angular/material/badge'
     MatButtonModule,
     MatMenuModule,
     MatListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSidenavModule
   ],
   exports: [
     HeaderComponent,

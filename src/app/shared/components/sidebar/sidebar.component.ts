@@ -64,13 +64,25 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
 
   menuItems: any[];
-  userInfo = JSON.parse(localStorage.getItem('User'));
+  userInfo;
 
   constructor(private router: Router, private service: UserService) { }
 
   ngOnInit(): void {
+    this.getUserAccount();
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+  }
 
+  getUserAccount() {
+    this.service.getUserAccount().subscribe(
+      res => {
+        this.userInfo = res;
+        localStorage.setItem('User', JSON.stringify(this.userInfo));
+      },
+      err => {
+        console.log(err);
+      },
+    );
   }
 
   isVisibleLink(menuItem, role) {

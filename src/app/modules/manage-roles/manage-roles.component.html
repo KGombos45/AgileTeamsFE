@@ -1,14 +1,14 @@
 <div class="main-content" [hidden]="!dataSource">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">User Roles</h4>
-                        <p class="card-category">Manage application user roles</p>
-                    </div>
-                    <div class="card-body">
-                        <perfect-scrollbar class="table-responsive">
+        <div class="card-wrapper">
+
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title ">User Roles</h4>
+                    <p class="card-category">Manage application user roles</p>
+                </div>
+                <div class="card-body">
+                    <perfect-scrollbar class="table-responsive">
                         <table mat-table [dataSource]="dataSource" matSort>
 
                             <!-- Username Column -->
@@ -44,8 +44,10 @@
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
                                 <td mat-cell *matCellDef="let element;">
                                     <mat-form-field class="full-width">
-                                        <mat-select [value]="element.role" (selectionChange)="onRoleChange($event, element)">
-                                            <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+                                        <mat-select [value]="element.role"
+                                            (selectionChange)="onRoleChange($event, element)">
+                                            <mat-option *ngFor="let role of roles" [value]="role">{{role}}
+                                            </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </td>
@@ -54,7 +56,8 @@
                             <ng-container matColumnDef="actions">
                                 <th mat-header-cell *matHeaderCellDef></th>
                                 <mat-cell *matCellDef="let row">
-                                    <button mat-flat-button class="btn-submit" type="submit" [disabled]="!row.isRoleChanged" (click)="updateRole(row)">Update</button>   
+                                    <button mat-flat-button class="btn-submit" type="submit"
+                                        [disabled]="!row.isRoleChanged" (click)="updateRole(row)">Update</button>
                                     <button mat-flat-button class="btn-delete" (click)="deleteUser(row)">
                                         <mat-icon>delete_outline</mat-icon>
                                     </button>
@@ -63,12 +66,12 @@
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            
+
                         </table>
                     </perfect-scrollbar>
-                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

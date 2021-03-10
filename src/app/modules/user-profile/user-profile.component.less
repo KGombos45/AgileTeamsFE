@@ -3,6 +3,11 @@
     width: auto;
     display: flex;
 
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;    
+        width: 100%;        
+    }
+
     &.left {
         flex-direction: row;
     }
@@ -13,10 +18,15 @@
 }
 
 .card-workItem {
-    width: 100% !important;
     height: 635px;
-    margin-left: 40px;
-    margin-top: 35px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        margin: 0 0 30px 0;
+        height: auto;
+    }
 }
 
 .card-small:first-child {
@@ -27,7 +37,11 @@
   .card-small {
     margin-left: 30px;
     height: 345px;
-    width: 100% !important;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+        margin: 0 0 30px 0;
+    }
 
     .table-responsive {
         display: block;
@@ -84,6 +98,11 @@
     mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
         padding-top: 10px;
     }
+
+    th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+        padding: 0;
+    }
+    
   }
 
 
@@ -118,4 +137,5 @@ textarea.mat-input-element {
 
 ::ng-deep .mat-icon {
     font-family: 'Material Icons' !important;
+    color: black;
 }
