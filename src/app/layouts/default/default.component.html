@@ -1,11 +1,11 @@
 <mat-sidenav-container fullscreen class="sidenav-container">
     <mat-sidenav #sidenav role="navigation" mode="side" [opened]="isOpen">
-        <app-sidebar></app-sidebar>
+        <app-sidebar (toggleNav)="navToggle($event)"></app-sidebar>
     </mat-sidenav>
     
     <mat-sidenav-content>
         <app-header (toggleNav)="navToggle($event)" [isOpen]="isOpen && !media.isActive('xs')"></app-header>
-            <router-outlet ></router-outlet>
+        <router-outlet></router-outlet>
         <app-footer></app-footer>   
     </mat-sidenav-content>
 </mat-sidenav-container>

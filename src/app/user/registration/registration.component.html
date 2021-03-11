@@ -1,46 +1,51 @@
-    <img src="../../../assets/img/add-user.png" alt="Register" class="mx-auto d-block userForm-image">
-        <form [formGroup]="service.registrationModel" #formDirective="ngForm" autocomplete="off" (submit)="onSubmit(formDirective)">
-            <label class="required-label">*All form fields are required.</label>
-            <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="UserName" required>
-                <mat-error class="text-danger" *ngIf="service.registrationModel.get('UserName').touched && service.registrationModel.get('UserName').errors?.required">A valid username is required.</mat-error>
-              </mat-form-field>
-            <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="default@email.com" formControlName="Email" required>
-                <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
-                <mat-error class="text-danger" *ngIf="service.registrationModel.get('Email').touched && service.registrationModel.get('Email').errors?.required">A valid email is required.</mat-error>
-                <mat-error class="text-danger" *ngIf="service.registrationModel.get('Email').touched && service.registrationModel.get('Email').errors?.email">Please re-enter a valid email address.</mat-error>
+    
+    <div class="wrapper1">
+      <img src="../../../assets/img/add-user.png" alt="Register" class="mx-auto d-block userForm-image">
+      <form [formGroup]="service.registrationModel" #formDirective="ngForm" autocomplete="off" (submit)="onSubmit(formDirective)">
+          <label class="required-label">*All form fields are required.</label>
+          <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="UserName" required>
+              <mat-error class="text-danger" *ngIf="service.registrationModel.get('UserName').touched && service.registrationModel.get('UserName').errors?.required">A valid username is required.</mat-error>
+            </mat-form-field>
+          <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="default@email.com" formControlName="Email" required>
+              <mat-icon matSuffix fontSet="material-icons-outlined">email</mat-icon>
+              <mat-error class="text-danger" *ngIf="service.registrationModel.get('Email').touched && service.registrationModel.get('Email').errors?.required">A valid email is required.</mat-error>
+              <mat-error class="text-danger" *ngIf="service.registrationModel.get('Email').touched && service.registrationModel.get('Email').errors?.email">Please re-enter a valid email address.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="FirstName" required>
+              <mat-error class="text-danger" *ngIf="service.registrationModel.get('FirstName').touched && service.registrationModel.get('FirstName').errors?.required">A valid first name is required.</mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                <mat-label>First name</mat-label>
-                <input matInput formControlName="FirstName" required>
-                <mat-error class="text-danger" *ngIf="service.registrationModel.get('FirstName').touched && service.registrationModel.get('FirstName').errors?.required">A valid first name is required.</mat-error>
-              </mat-form-field>
+              <mat-label>Last name</mat-label>
+              <input matInput formControlName="LastName" required>
+              <mat-error class="text-danger"  *ngIf="service.registrationModel.get('LastName').touched && service.registrationModel.get('LastName').errors?.required">A valid last name is required.</mat-error>
+            </mat-form-field>
+          <div formGroupName="Passwords">
               <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                <mat-label>Last name</mat-label>
-                <input matInput formControlName="LastName" required>
-                <mat-error class="text-danger"  *ngIf="service.registrationModel.get('LastName').touched && service.registrationModel.get('LastName').errors?.required">A valid last name is required.</mat-error>
-              </mat-form-field>
-            <div formGroupName="Passwords">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="Password" [type]="hide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix fontSet="material-icons-outlined" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.Password').touched && service.registrationModel.get('Passwords.Password').errors?.required">A valid password is required.</mat-error>
+                  <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.Password').touched && service.registrationModel.get('Passwords.Password').errors?.minlength">Password must be a minimum of 4 characters.</mat-error>
+                </mat-form-field>
                 <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="Password" [type]="hide ? 'password' : 'text'" required>
-                    <mat-icon matSuffix fontSet="material-icons-outlined" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.Password').touched && service.registrationModel.get('Passwords.Password').errors?.required">A valid password is required.</mat-error>
-                    <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.Password').touched && service.registrationModel.get('Passwords.Password').errors?.minlength">Password must be a minimum of 4 characters.</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="full-width" [hideRequiredMarker]="hideRequiredMarker">
-                    <mat-label>Confirm Password</mat-label>
-                    <input matInput formControlName="ConfirmPassword" [type]="hide ? 'password' : 'text'" required>
-                    <mat-icon matSuffix fontSet="material-icons-outlined" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.ConfirmPassword').touched && service.registrationModel.get('Passwords.ConfirmPassword').errors?.required">A valid password is required.</mat-error>
-                    <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.ConfirmPassword').touched && service.registrationModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Passwords do not match, please confirm password.</mat-error>
-                  </mat-form-field>
-            </div>
-            <div class="form-row">
-                <button mat-flat-button class="btn-register" type="submit" [disabled]="!service.registrationModel.valid">Register</button>
-                <div class="clearfix"></div>
-            </div>
-        </form>
+                  <mat-label>Confirm Password</mat-label>
+                  <input matInput formControlName="ConfirmPassword" [type]="hide ? 'password' : 'text'" required>
+                  <mat-icon matSuffix fontSet="material-icons-outlined" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.ConfirmPassword').touched && service.registrationModel.get('Passwords.ConfirmPassword').errors?.required">A valid password is required.</mat-error>
+                  <mat-error class="text-danger" *ngIf="service.registrationModel.get('Passwords.ConfirmPassword').touched && service.registrationModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Passwords do not match, please confirm password.</mat-error>
+                </mat-form-field>
+          </div>
+          <div class="form-row">
+              <button mat-flat-button class="btn-register" type="submit" [disabled]="!service.registrationModel.valid">Register</button>
+              <div class="clearfix"></div>
+          </div>
+      </form>
+
+    </div>
+    

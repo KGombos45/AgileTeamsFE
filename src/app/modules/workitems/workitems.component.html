@@ -24,8 +24,9 @@
                                         <mat-icon *ngIf="!element.isExpanded">add</mat-icon>
                                         <mat-icon *ngIf="element.isExpanded">remove</mat-icon>
                                     </button>
-                                    <button class="btn-link"
-                                        (click)="viewWorkItem(element)">{{element.workItemName}}</button>
+                                    <button class="btn-link" (click)="viewWorkItem(element)">
+                                        {{element.workItemName}}
+                                    </button>
                                 </td>
                             </ng-container>
 

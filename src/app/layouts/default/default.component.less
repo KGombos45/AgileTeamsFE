@@ -143,7 +143,7 @@ mat-sidenav {
 
     animation: bounceInLeft;
     animation-duration: 1s;
-    width: 285px;
+    width: 315px;
 }
 
 mat-sidenav-container {
@@ -217,7 +217,11 @@ mat-sidenav-container {
 
         ::ng-deep .mat-icon {
             color: var(--green);     
-        }   
+        }
+        
+        &:focus {
+            outline: none;
+        }
     }
 
     &.btn-open {

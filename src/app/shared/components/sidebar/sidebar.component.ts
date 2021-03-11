@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
 
@@ -63,6 +63,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() toggleNav: EventEmitter<boolean> = new EventEmitter();
   menuItems: any[];
   userInfo;
 
@@ -71,6 +72,12 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getUserAccount();
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+  }
+
+  toggleSideNav() {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.toggleNav.emit(true);
+    }
   }
 
   getUserAccount() {

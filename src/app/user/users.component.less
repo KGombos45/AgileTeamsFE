@@ -50,6 +50,11 @@
 
 }
 
+.wrapper1, .wrapper2, .wrapper3 {
+    animation: fadeIn;
+    animation-duration: .8s;
+}
+
 .hexagon {
     position: relative;
     width: 55px; 
@@ -106,9 +111,7 @@
         img {
             margin: 0 auto;
             height: 165px;
-            width: 150px;
-
-            //animation: rotation 20s infinite linear;
+            width: 150px;         
 
         }
 
@@ -247,9 +250,9 @@ form {
 
 @keyframes rotation {
     from {
-      transform: rotate(0deg);
+        transform: rotate3d(0, 0, 0, 0deg);
     }
     to {
-      transform: rotate(359deg);
+        transform: rotate3d(1, 1, 1, 360deg);
     }
   }

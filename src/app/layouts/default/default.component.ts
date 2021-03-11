@@ -8,8 +8,6 @@ import { MediaObserver } from '@angular/flex-layout';
 })
 export class DefaultComponent implements OnInit {
 
-  @Output() toggleNavBody: EventEmitter<boolean> = new EventEmitter();
-
   isOpen = true;
   constructor(public media: MediaObserver) { }
 
@@ -17,10 +15,6 @@ export class DefaultComponent implements OnInit {
     if(this.media.isActive('xs')) {
       this.isOpen = false;
     }
-  }
-
-  toggleSideNav() {
-    this.isOpen = !this.isOpen;
   }
 
   navToggle($event): void {

@@ -15,12 +15,12 @@
         <mat-divider></mat-divider>
         <ul *ngIf="userInfo">
             <li *ngFor="let menuItem of menuItems">
-                <a mat-list-item [routerLink]="[menuItem.path]" routerLinkActive="active" *ngIf="isVisibleLink(menuItem, userInfo.role)">
+                <a mat-list-item [routerLink]="[menuItem.path]" routerLinkActive="active" *ngIf="isVisibleLink(menuItem, userInfo.role)" (click)="toggleSideNav()">
                     <i class="material-icons">{{menuItem.icon}}</i>{{menuItem.title}}
                 </a>
                     <ul *ngIf="menuItem.subMenu">
                         <li>
-                            <a mat-list-item [routerLink]="[menuItem.subLink.path]" routerLinkActive="active">
+                            <a mat-list-item [routerLink]="[menuItem.subLink.path]" routerLinkActive="active" (click)="toggleSideNav()">
                                 <i class="material-icons">{{menuItem.subLink.icon}}</i>{{menuItem.subLink.title}}
                             </a>
                         </li>

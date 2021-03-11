@@ -55,7 +55,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CreateProjectComponent,    
     ProjectViewComponent,
     MyWorkItemsComponent,
-    MyTicketsComponent
+    MyTicketsComponent,
   ],
   imports: [
     CommonModule,
