@@ -150,6 +150,30 @@ export class UserService {
     return this.http.get(this.BaseURI+'/WorkItem/WorkItems');
   }
 
+  getWorkItemsStatusCount() {
+    return this.http.get(this.BaseURI+'/WorkItem/GetWorkItemStatusCount');
+  }
+
+  getWorkItemsPriorityCount() {
+    return this.http.get(this.BaseURI+'/WorkItem/GetWorkItemPriorityCount');
+  }
+
+  getWorkItemOwnerCount() {
+    return this.http.get(this.BaseURI+'/WorkItem/GetWorkItemOwnerCount');
+  }
+
+  getTicketTypeCount() {
+    return this.http.get(this.BaseURI+'/Ticket/GetTicketTypeCount');
+  }
+
+  getTicketStatusCount() {
+    return this.http.get(this.BaseURI+'/Ticket/GetTicketStatusCount');
+  }
+  
+  getTicketOwnerCount() {
+    return this.http.get(this.BaseURI+'/Ticket/GetTicketOwnerCount');
+  }
+
   getWorkItemUsers(workItem) {
     return this.http.post(this.BaseURI+'/WorkItem/Users/' + workItem.workItemID, workItem);
   }

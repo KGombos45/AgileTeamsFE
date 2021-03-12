@@ -1,56 +1,61 @@
-<div class="main-content">
+<div class="main-content" *ngIf="filtersLoaded | async">
     <div class="container-fluid">
         <div class="card-wrapper">
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Work Items by Status</h4>
                     </div>
                     <div class="card-body">
-                        <!-- <google-chart [title]="" [type]="donutchart" [data]="" [columns]="" [options]="">
-                        </google-chart> -->
+                        <google-chart [title]="" type="PieChart" [data]="workItemStatus" [columns]="chartColumns" [options]="donutOptions">
+                        </google-chart>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Work Items by Priority</h4>
                     </div>
                     <div class="card-body">
-
+                        <google-chart [title]="" type="PieChart" [data]="workItemPriority" [columns]="chartColumns" [options]="">
+                        </google-chart>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Work Items Owner Breadown</h4>
                     </div>
                     <div class="card-body">
-
+                        <google-chart [title]="" type="Bar" [data]="workItemOwner" [columns]="workItemColumns" [options]="">
+                        </google-chart>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Tickets by Status</h4>
                     </div>
                     <div class="card-body">
-
+                        <google-chart [title]="" type="PieChart" [data]="ticketStatus" [columns]="" [options]="donutOptions">
+                        </google-chart>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Tickets by Type</h4>
                     </div>
                     <div class="card-body">
-
+                        <google-chart [title]="" type="PieChart" [data]="ticketType" [columns]="" [options]="">
+                        </google-chart>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
-
+                        <h4 class="card-title ">Tickets Owner Breakdown</h4>
                     </div>
                     <div class="card-body">
-
+                        <google-chart [title]="" type="BarChart" [data]="ticketOwner" [columns]="ticketColumns" [options]="">
+                        </google-chart>
                     </div>
                 </div>
             </div>

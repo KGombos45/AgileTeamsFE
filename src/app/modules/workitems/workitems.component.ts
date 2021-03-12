@@ -203,7 +203,6 @@ onTicketOwnerChange(event, element) {
   getWorkItems() {
     this.service.getWorkItems().subscribe(
       (res: any) => {
-        debugger;
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
         this.setIsExpanded(this.dataSource.data);
@@ -226,7 +225,6 @@ onTicketOwnerChange(event, element) {
   }
 
   deleteWorkItem(element) {
-    debugger;
     this.service.deleteWorkItem(element).subscribe(res => {
       if (element.tickets.length > 0) {
         this.toastr.warning('Work item and tickets deleted', 'Updated successfully');
