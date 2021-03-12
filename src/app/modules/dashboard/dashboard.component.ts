@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
 
 
   workItemColumns = ['Work Item Owner', 'Work Items'];
-  ticketColumsn = ['Ticket Owner', 'Tickets'];
+  ticketColumns = ['Ticket Owner', 'Tickets'];
 
   constructor(private service: UserService) { }
 

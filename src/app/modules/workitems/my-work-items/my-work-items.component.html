@@ -128,7 +128,7 @@
                             <ng-container matColumnDef="actions">
                                 <th mat-header-cell *matHeaderCellDef></th>
                                 <mat-cell *matCellDef="let row">
-                                    <button mat-flat-button class="btn-delete" (click)="deleteWorkItem(element)">
+                                    <button mat-flat-button class="btn-delete" (click)="deleteWorkItem(element)" *ngIf="userInfo.role === 'Admin' || userInfo.role === 'Project Manager'">
                                         <mat-icon>delete_outline</mat-icon>
                                     </button>
                                 </mat-cell>

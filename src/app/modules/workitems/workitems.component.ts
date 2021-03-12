@@ -47,7 +47,6 @@ export class WorkItemsComponent implements OnInit {
     this.getTicketStatuses();
     this.getWorkItemPriorities();
     this.getWorkItems();
-
   }
 
   setIsExpanded(data) {
@@ -275,5 +274,4 @@ onTicketOwnerChange(event, element) {
   compareTicketOwners(o1: any, o2: any): boolean {
     return o1.userName === o2;
   }
-
 }

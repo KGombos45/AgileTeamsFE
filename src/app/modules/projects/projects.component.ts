@@ -20,19 +20,19 @@ export class ProjectsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
   currentDate = new Date();
+  userInfo = JSON.parse(localStorage.getItem('User'));
 
   constructor(private service: UserService, private toastr: ToastrService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit(): void {
 
     this.getProjects();
-
+    
   }
 
   getProjects() {
     this.service.getProjects().subscribe(
       (res: any) => {
-        debugger;
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
       },
