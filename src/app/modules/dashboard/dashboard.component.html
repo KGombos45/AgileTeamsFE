@@ -7,7 +7,7 @@
                         <h4 class="card-title ">Work Items by Status</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="PieChart" [data]="workItemStatus" [columns]="chartColumns" [options]="donutOptions">
+                        <google-chart [title]="" type="PieChart" [data]="workItemStatus" [columns]="chartColumns" [options]="donutOptionsStatus">
                         </google-chart>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
                         <h4 class="card-title ">Work Items by Priority</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="PieChart" [data]="workItemPriority" [columns]="chartColumns" [options]="">
+                        <google-chart [title]="" type="PieChart" [data]="workItemPriority" [columns]="chartColumns" [options]="pieOptionsPriority">
                         </google-chart>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         <h4 class="card-title ">Work Items Owner Breadown</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="Bar" [data]="workItemOwner" [columns]="workItemColumns" [options]="">
+                        <google-chart [title]="" type="Bar" [data]="workItemOwner" [columns]="workItemColumns" [options]="barOptions">
                         </google-chart>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <h4 class="card-title ">Tickets by Status</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="PieChart" [data]="ticketStatus" [columns]="" [options]="donutOptions">
+                        <google-chart [title]="" type="PieChart" [data]="ticketStatus" [columns]="" [options]="donutOptionsTicketStatus">
                         </google-chart>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         <h4 class="card-title ">Tickets by Type</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="PieChart" [data]="ticketType" [columns]="" [options]="">
+                        <google-chart [title]="" type="PieChart" [data]="ticketType" [columns]="" [options]="pieOptionsType">
                         </google-chart>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <h4 class="card-title ">Tickets Owner Breakdown</h4>
                     </div>
                     <div class="card-body">
-                        <google-chart [title]="" type="BarChart" [data]="ticketOwner" [columns]="ticketColumns" [options]="">
+                        <google-chart [title]="" type="BarChart" [data]="ticketOwner" [columns]="ticketColumns" [options]="barOptions">
                         </google-chart>
                     </div>
                 </div>

@@ -20,8 +20,37 @@ export class DashboardComponent implements OnInit {
   ticketType = [];
   ticketOwner = [];
 
-  donutOptions = {
-    pieHole: 0.4
+  donutOptionsStatus = {
+    pieHole: 0.4,
+    fontName: 'Raleway',
+    colors: ['#85d780', '#4344c7', '#4f50ff', '#8dcbce', '#fffc84', '#e1e1e1'],
+    pieSliceTextStyle: {color: 'black'}
+  };
+
+  donutOptionsTicketStatus = {
+    pieHole: 0.4,
+    fontName: 'Raleway',
+    colors: ['#85d780', '#fffc84', '#4f50ff', '#e1e1e1'],
+    pieSliceTextStyle: {color: 'black'}
+  };
+
+
+  pieOptionsPriority = {
+    is3D: true,
+    fontName: 'Raleway',
+    colors: ['#f1756f', '#fffc84', '#f1d56f'],
+    pieSliceTextStyle: {color: 'black'}
+  };
+
+  pieOptionsType = {
+    is3D: true,
+    fontName: 'Raleway',
+    colors: ['#8dcbce', '#4f50ff'],
+    pieSliceTextStyle: {color: 'black'}
+  };
+
+  barOptions = {
+    fontName: 'Raleway'
   };
 
   filtersLoaded: Promise<boolean>;
