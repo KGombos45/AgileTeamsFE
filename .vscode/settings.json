@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a5a8ca5a-a214-4c10-9236-0d1f70665e5c/resourceGroups/AgileTeams/providers/Microsoft.Web/sites/agileteams",
+    "appService.deploySubpath": "dist\\AgileTeams"
+}

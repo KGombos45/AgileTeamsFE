@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Angular7'`, () => {
+  it(`should have as title 'AgileTeams'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Angular7');
+    expect(app.title).toEqual('AgileTeams');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Angular7 app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('AgileTeams app is running!');
   });
 });

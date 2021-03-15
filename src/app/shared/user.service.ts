@@ -22,7 +22,9 @@ export class UserService {
 
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
-  readonly BaseURI = 'https://localhost:44332/api';
+  //readonly BaseURI = 'https://localhost:44332/api';
+  readonly BaseURI = 'https://agileteams.azurewebsites.net/api';
+
   workItem = [];
   ticket = [];
   project = [];
