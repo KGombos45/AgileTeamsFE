@@ -258,7 +258,6 @@ onTicketOwnerChange(event, element) {
   }
 
   compareProjects(o1: any, o2: any): boolean {
-    debugger;
     return o1.projectName === o2.projectName;
   }
 

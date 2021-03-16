@@ -90,7 +90,6 @@ export class CreateWorkItemComponent implements OnInit {
 
   createWorkItem() {  
     this.workItemModel.value.createdBy = this.userInfo.userName;
-    debugger;
     this.service.createWorkItem(this.workItemModel).subscribe(res => {
       this.toastr.success('Work item created!', 'Work item succesfully added to work items repository.');
     });

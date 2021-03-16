@@ -79,7 +79,6 @@ export class ManageRolesComponent implements OnInit {
 
   updateRole(row) {
     row.isRoleChanged = false;
-    debugger;
     this.service.updateUserRoles(row.id, row).subscribe(res => {
       this.toastr.success('User role succesfully updated', 'Updated successfully');
     });   

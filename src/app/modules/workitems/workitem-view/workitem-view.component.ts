@@ -102,7 +102,6 @@ export class WorkItemViewComponent implements OnInit {
   getWorkItemsAndTickets() {
 
     var list = [];
-    debugger;
     list.push(this.workItem);
 
     this.workItem.tickets.forEach(ticket => {
@@ -168,7 +167,6 @@ export class WorkItemViewComponent implements OnInit {
   }
 
   createWorkItemComment() {  
-    debugger;
     this.service.createWorkItemComment(this.workItemComment.value).subscribe(res => {
       this.toastr.success('Comment created!', 'Comment succesfully added to work items repository.');
     });

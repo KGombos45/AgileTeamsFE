@@ -76,7 +76,6 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.service.getUserAccount().toPromise().then(data => {
-      debugger;
       this.editModel.patchValue(data);
     });
     this.editModel.get('userName').disable();
@@ -109,7 +108,6 @@ export class UserProfileComponent implements OnInit {
 
   viewWorkItem(element) {
 
-    debugger;
     this.service.setWorkItem(element);
 
     this.router.navigate(['/workitem-view']);

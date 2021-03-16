@@ -40,7 +40,6 @@ export class MyTicketsComponent implements OnInit {
   getUserTickets() {
     this.service.getUserTickets(this.userInfo.id).subscribe(
       (res: any) => {
-        debugger;
         this.dataSource.data = res;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;

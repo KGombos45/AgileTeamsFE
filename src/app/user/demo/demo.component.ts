@@ -20,7 +20,6 @@ export class DemoComponent implements OnInit {
   }
 
   login(event) {
-    debugger;
     this.service.login(event).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
